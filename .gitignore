@@ -1,0 +1,14 @@
+#vim
+.*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+#java
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear

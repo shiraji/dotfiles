@@ -1,0 +1,74 @@
+# User specific aliases and functions
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+case ${OSTYPE} in
+  darwin*)
+    alias ls='ls -G'
+    ;;
+  linux*)
+    alias ls='ls --color=always'
+    ;;
+esac
+alias ll='clear;ls -la'
+alias grep='grep --color=always'
+alias vi='vim'
+alias javac="javac -J-Dfile.encoding=UTF-8"
+alias java="java -Dfile.encoding=UTF-8"
+alias cd=cdls
+alias crontab=crontabl
+
+# cd setting. do clear, cd, pwd, and ls -la
+function cdls() {
+	clear;
+	\cd $1;
+	echo -e '\e[36m'`pwd`'\e[m';
+case ${OSTYPE} in
+  darwin*)
+    ls -la
+    ;;
+  linux*)
+    ls -la | less -EFR;
+    ;;
+esac
+}
+# vimのlessを使うように設定
+_vim_version=`vim --version | head -1 | sed 's/^.*\ \([0-9]\)\.\([0-9]\)\ .*$/\1\2/'`
+_less_path='/usr/share/vim/vim'$_vim_version'/macros/less.sh'
+if [ -f $_less_path ]; then
+	alias lesss=$_less_path
+fi
+
+# crontab設定後crontab -lをする
+function crontabl() {
+  if [ $# -gt 1 ]; then
+    # 複数パラメータがある場合はそのまま。
+    \crontab $@
+  else
+    if [ "$1" != "-r" ]; then
+      if [ "$1" != "-l" ]; then
+        \crontab $1;
+      fi
+      \crontab -l;
+    else
+      echo "'crontab -r' is not acceptable "
+    fi
+  fi
+}
+
+# git系のalias
+alias g='git'
+alias gf='g fetch'
+alias gm='g merge'
+alias gd='g diff'
+alias ga='g add'
+alias ga.='ga .'
+alias gcm='g commit -m'
+alias gca='g commit -a'
+alias gp='g push origin'
+alias gl='g log'
+alias gs='g status'
+alias gco='g checkout'
+
+export EDITOR=vim svn commit
+export SVN_EDITOR=vim

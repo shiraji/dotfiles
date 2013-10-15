@@ -1,0 +1,59 @@
+escape ^z^z
+deflogin off
+startup_message off
+autodetach on
+vbell off
+defscrollback 10000
+multiuser on
+
+# Bottom Status line
+#hardstatus off
+hardstatus alwayslastline '%{gk}[%{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= w}%?%+Lw%?%? %{g}][%{d}%l%{g}]%?%=[%{= w}%Y/%m/%d %0C%a%{g}]%{W}'
+
+# Bind key assign for functionable key
+termcapinfo xterm* 'k1=\E[11~:k2=\E[12~:k3=\E[13~:k4=\E[14~'
+bindkey -k k1 select 1
+bindkey -k k2 select 2
+bindkey -k k3 select 3
+bindkey -k k4 select 4
+bindkey -k k5 select 5
+bindkey -k k6 select 6
+bindkey -k k7 select 7
+bindkey -k k8 select 8
+bindkey -k k9 select 9
+bindkey -k k; select 0
+
+bind w windowlist -b
+
+#C-a s機能のアンバインドのため
+bind s
+
+#split window
+bind s eval split focus "select 0"
+bind ^s eval split focus "select 0"
+
+#move current window
+bind j focus down
+bind ^j focus down
+bind k focus up
+bind ^k focus up
+
+#resize
+bind r eval 'command -c resize'
+bind ^r eval 'command -c resize'
+bind + eval 'command -c resize'
+bind - eval 'command -c resize'
+bind -c resize + eval 'resize +1' 'command -c resize'
+bind -c resize - eval 'resize -1' 'command -c resize'
+
+#close current window
+bind c remove
+bind ^c remove
+
+#close all other windows
+bind o only
+bind ^o only
+
+#HOMEキーとかが使えるようにする設定
+term xterm-256color
+
