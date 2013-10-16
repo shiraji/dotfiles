@@ -69,6 +69,7 @@ alias gp='g push origin'
 alias gl='g log'
 alias gs='g status'
 alias gco='g checkout'
+alias gpl='g pull'
 
 export EDITOR=vim svn commit
 export SVN_EDITOR=vim
