@@ -70,6 +70,8 @@ alias gl='g log --stat'
 alias gs='g status'
 alias gco='g checkout'
 alias gpl='g pull'
+alias gdr='gd remotes/origin/master'
+alias gr='g reset HEAD'
 
 export EDITOR=vim svn commit
 export SVN_EDITOR=vim
