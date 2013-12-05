@@ -72,6 +72,7 @@ alias gco='g checkout'
 alias gpl='g pull'
 alias gdr='gd remotes/origin/master'
 alias gr='g reset HEAD'
+alias glr='gl origin/master..master'
 
 export EDITOR=vim svn commit
 export SVN_EDITOR=vim
