@@ -73,6 +73,7 @@ alias gpl='g pull'
 alias gdr='gd remotes/origin/master'
 alias gr='g reset HEAD'
 alias glr='gl origin/master..master'
+alias gg='g log --pretty=format:"%h %C(yellow)%ad%C(reset) | %s%C(red)%d%C(reset) %C(blue)[%an]%C(reset)" --graph --date=iso'
 
 export EDITOR=vim svn commit
 export SVN_EDITOR=vim
