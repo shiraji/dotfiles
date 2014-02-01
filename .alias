@@ -78,5 +78,8 @@ alias gb='g branch'
 alias gbr='g branch -r'
 alias gba='g branch -a'
 
+alias pr='play -DapplyEvolutions.default=true run'
+alias pd='play debug -DapplyEvolutions.default=true run'
+
 export EDITOR=vim svn commit
 export SVN_EDITOR=vim
