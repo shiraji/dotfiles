@@ -21,7 +21,7 @@ do
 			echo "Create backup: $backupFile"
 		fi
 		#ファイルの削除。
-		rm $currentFile
+		unlink $currentFile
 		echo "Delete $currentFile"
 	fi
 	#リンクを張る
