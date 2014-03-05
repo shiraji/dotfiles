@@ -82,6 +82,7 @@ alias gba='g branch -a'
 alias pr='play -DapplyEvolutions.default=true run'
 alias pd='play debug -DapplyEvolutions.default=true run'
 alias pt='play test'
+alias pcc='play clean compile'
 
 export EDITOR=vim svn commit
 export SVN_EDITOR=vim
