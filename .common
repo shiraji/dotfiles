@@ -1,5 +1,5 @@
 function git_branch {
-  _branch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'`
+  _branch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /'`
   echo $_branch
 }
 
@@ -18,4 +18,3 @@ function git_not_pushed {
     fi
   fi
 }
-
