@@ -74,7 +74,7 @@ function git_not_pushed {
     _head="`git rev-parse --verify -q HEAD 2>/dev/null`"
     if [[ $? -eq 0 ]]; then
       _remote=`git rev-parse --verify -q origin/\`git_branch\` 2>/dev/null`
-      if [[ -n "${_remote}" ]]; then
+      if [[ $? -eq 0 ]]; then
         if [[ "${_head}" = "${_remote}" ]]; then
           return
         fi
