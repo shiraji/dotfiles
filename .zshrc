@@ -71,7 +71,6 @@ function rprompt-git-current-branch {
 }
 
 source $HOME/dotfiles/.alias
-source $HOME/dotfiles/.common
 
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
 setopt prompt_subst

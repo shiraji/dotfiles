@@ -21,7 +21,7 @@ function git_status {
 	echo $color
 }
 
-source $HOME/dotfiles/.common
+source $HOME/dotfiles/.alias
 
 function git_branch_with_format {
   _branch=`git_branch`
