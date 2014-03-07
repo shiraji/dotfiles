@@ -70,6 +70,24 @@ function rprompt-git-current-branch {
         echo "[%{$color%}$name%{$reset_color%}]"
 }
 
+function rprompt-git-not-pushed {
+  if [[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]]; then
+    head="$(git rev-parse --verify -q HEAD 2>/dev/null)"
+    if [[ $? -eq 0 ]]; then
+      remotes=($(git rev-parse --remotes))
+      if [[ -n "${remotes[@]}" ]]; then
+        for x in ${remotes[@]}
+        do
+          if [[ "$head" = "$x" ]]; then
+            return
+          fi
+        done
+        echo -n " NOT PUSHED"
+      fi
+    fi
+  fi
+}
+
 source $HOME/dotfiles/.alias
 
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
@@ -77,7 +95,7 @@ setopt prompt_subst
 
 PROMPT='[%F{yellow}%n%f%F{red}@%f%F{blue}%m%f %F{green}%~%f]%# '
 
-RPROMPT='`rprompt-git-current-branch`'
+RPROMPT='`rprompt-git-current-branch``rprompt-git-not-pushed`'
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
