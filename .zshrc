@@ -74,14 +74,11 @@ function rprompt-git-not-pushed {
   if [[ "`git rev-parse --is-inside-work-tree 2>/dev/null`" = "true" ]]; then
     _head="`git rev-parse --verify -q HEAD 2>/dev/null`"
     if [[ $? -eq 0 ]]; then
-      _remotes=(`git rev-parse --remotes`)
-      if [[ -n "${_remotes[@]}" ]]; then
-        for _remote in ${_remotes[@]}
-        do
-          if [[ "${_head}" = "${_remote}" ]]; then
-            return
-          fi
-        done
+      _remotes=`git show-ref origin/master | cut -d ' '  -f1`
+      if [[ -n "${_remote}" ]]; then
+        if [[ "${_head}" = "${_remote}" ]]; then
+          return
+        fi
         echo -n "*"
       fi
     fi
