@@ -82,7 +82,7 @@ function rprompt-git-not-pushed {
             return
           fi
         done
-        echo -n " NOT PUSHED"
+        echo -n " *"
       fi
     fi
   fi
