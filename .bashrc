@@ -26,4 +26,20 @@ function git_branch {
 	echo $_branch
 }
 
-PS1='\[\033[0;37m\][\[\033[0;33m\]\u\[\033[0;31m\]@\[\033[0;34m\]\h \[\033[01;36m\]\W\[\033[0;37m\]] \[\033[$(git_status)m\]$(git_branch)\[\033[00m\]\$ '
+function git_not_pushed {
+  if [[ "`git rev-parse --is-inside-work-tree 2>/dev/null`" = "true" ]]; then
+    _head="`git rev-parse --verify -q HEAD 2>/dev/null`"
+    if [[ $? -eq 0 ]]; then
+      _branch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+      _remote=`git show-ref origin/${_branch} | cut -d ' '  -f1`
+      if [[ -n "${_remote}" ]]; then
+        if [[ "${_head}" = "${_remote}" ]]; then
+          return
+        fi
+        echo -n "*"
+      fi
+    fi
+  fi
+}
+
+PS1='\[\033[0;37m\][\[\033[0;33m\]\u\[\033[0;31m\]@\[\033[0;34m\]\h \[\033[01;36m\]\W\[\033[0;37m\]] \[\033[$(git_status)m\]$(git_branch)${git_not_pushed}\[\033[00m\]\$ '
