@@ -56,16 +56,19 @@ function crontabl() {
   fi
 }
 
+# リモートブランチとのログの差分表示
 function glr() {
   _branch=`git_branch`
   git log origin/${_branch}..${_branch}
 }
 
+# ブランチ名取得
 function git_branch {
   _branch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
   echo $_branch
 }
 
+# リモートブランチのヘッドのハッシュと今のHEADを比較する
 function git_not_pushed {
   if [[ "`git rev-parse --is-inside-work-tree 2>/dev/null`" = "true" ]]; then
     _head="`git rev-parse --verify -q HEAD 2>/dev/null`"
