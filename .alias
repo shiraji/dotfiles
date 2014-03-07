@@ -56,6 +56,11 @@ function crontabl() {
   fi
 }
 
+function glr() {
+  _branch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+  git log origin/${_branch}..${_branch}
+}
+
 # git系のalias
 alias g='git'
 alias gf='g fetch'
@@ -73,7 +78,7 @@ alias gco='g checkout'
 alias gpl='g pull'
 alias gdr='gd remotes/origin/master'
 alias gr='g reset HEAD'
-alias glr='gl origin/master..master'
+alias glr=glr
 alias gg='g log --pretty=format:"%h %C(yellow)%ad%C(reset) | %s%C(red)%d%C(reset) %C(blue)[%an]%C(reset)" --graph --date=iso'
 alias gb='g branch'
 alias gbr='g branch -r'
