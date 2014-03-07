@@ -83,6 +83,7 @@ alias pr='play -DapplyEvolutions.default=true run'
 alias pd='play debug -DapplyEvolutions.default=true run'
 alias pt='play test'
 alias pcc='play clean compile'
+alias pcr='pcc;pr'
 
 export EDITOR=vim svn commit
 export SVN_EDITOR=vim
