@@ -71,19 +71,18 @@ function rprompt-git-current-branch {
 }
 
 function rprompt-git-not-pushed {
-  # レポジトリの有無を確認
-  if [ "`git rev-parse --is-inside-work-tree 2>/dev/null`" = "true" ]; then
-    head="`git rev-parse --verify -q HEAD 2>/dev/null`"
-    if [ $? -eq 0 ]; then
-      remotes=`git rev-parse --remotes`
-      if [ -n "${remotes[@]}" ]; then
-        for x in ${remotes[@]}
+  if [[ "`git rev-parse --is-inside-work-tree 2>/dev/null`" = "true" ]]; then
+    _head="`git rev-parse --verify -q HEAD 2>/dev/null`"
+    if [[ $? -eq 0 ]]; then
+      _remotes=(`git rev-parse --remotes`)
+      if [[ -n "${_remotes[@]}" ]]; then
+        for _remote in ${_remotes[@]}
         do
-          if [ "$head" = "$x" ]; then
+          if [[ "${_head}" = "${_remote}" ]]; then
             return
           fi
         done
-        echo "*"
+        echo -n "*"
       fi
     fi
   fi
