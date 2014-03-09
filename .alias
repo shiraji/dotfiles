@@ -58,7 +58,7 @@ function crontabl() {
 
 # リモートブランチとのログの差分表示
 function glr() {
-  _branch=`git_branch`
+  _branch=`gbn`
   git log origin/${_branch}..${_branch}
 }
 
