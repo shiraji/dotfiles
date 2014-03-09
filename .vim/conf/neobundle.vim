@@ -51,6 +51,8 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'FuzzyFinder'
 " neosnippet。neocomplcacheのプラグイン。スニペットを利用できる
 NeoBundle 'Shougo/neosnippet'
+" neosnippetのデフォルトのsnippet
+NeoBundle 'Shougo/neosnippet-snippets'
 " nerdtreeプラグイン
 NeoBundle 'jistr/vim-nerdtree-tabs'
 
