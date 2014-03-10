@@ -42,7 +42,11 @@ ZSH=$HOME/.oh-my-zsh
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git, ant, bundler, capistrano, cp, gem, github, history, mvn, perl, python, rails, rails3, rails4, rake, rbenv, rsync, ruby, rvm, screen, ssh-agent, svn, thor, tmux, vagrant, yum)
 
+# oh-my-zshのimport
 source $ZSH/oh-my-zsh.sh
+
+# incr.zshのimport
+source $HOME/.zsh/incr-0.2.zsh
 
 function rprompt-git-current-branch {
         local name st color

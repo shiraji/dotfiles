@@ -52,6 +52,12 @@ do
 	if [ "$file" = $ZSHRC ]; then
 		#oh-my-zshの設定を持ってくる。
 		git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+
+    # .zshフォルダの作成
+    mkdir -p ~/.zsh/
+
+    # zshのincremetal searchできるようにする
+    curl -o ~/.zsh/incr-0.2.zsh -L http://mimosa-pudica.net/src/incr-0.2.zsh
 	fi
 
 done
