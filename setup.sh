@@ -43,7 +43,7 @@ do
 		#neobundleをインストールする
 		mkdir -p $HOME/.vim/bundle/
 		git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-		vim -e -c "NeoBundleInstall" -c "q" -c "q"
+    bash ./neobundle_install.sh
 
 		#NERDTreeのプラグインをインストールする。
 		git clone git://gist.github.com/205807 ~/.vim/bundle/nerdtree/nerdtree_plugin/205807
