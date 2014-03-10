@@ -103,7 +103,13 @@ alias gb='g branch'
 alias gbr='g branch -r'
 alias gba='g branch -a'
 alias gbn='g rev-parse --abbrev-ref HEAD'
+alias gst='g stash'
+alias gsts='gst save'
+alias gstp='gst pop'
+alias gsta='gst apply'
+alias gstd='gst drop'
 
+# play用のalias
 alias pr='play -DapplyEvolutions.default=true run'
 alias pd='play debug -DapplyEvolutions.default=true run'
 alias pt='play test'
