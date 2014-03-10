@@ -1,3 +1,6 @@
+# incr.zshのimport
+source $HOME/.zsh/incr-0.2.zsh
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -45,8 +48,6 @@ plugins=(git, ant, bundler, capistrano, cp, gem, github, history, mvn, perl, pyt
 # oh-my-zshのimport
 source $ZSH/oh-my-zsh.sh
 
-# incr.zshのimport
-source $HOME/.zsh/incr-0.2.zsh
 
 function rprompt-git-current-branch {
         local name st color
