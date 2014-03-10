@@ -22,7 +22,7 @@ function git_status {
 }
 
 function git_branch_with_format {
-  _branch=`git_branch`
+  _branch=`gbn`
   if [[ -n ${_branch} ]]; then
     echo "(${_branch})"
   fi

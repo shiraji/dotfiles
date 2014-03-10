@@ -58,27 +58,24 @@ function crontabl() {
 
 # リモートブランチとのログの差分表示
 function glr() {
-  _branch=`git_branch`
+  _branch=`gbn`
   git log origin/${_branch}..${_branch}
-}
-
-# ブランチ名取得
-function git_branch {
-  _branch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
-  echo $_branch
 }
 
 # リモートブランチのヘッドのハッシュと今のHEADを比較する
 function git_not_pushed {
+  # git管理下にいるかどうかの確認
   if [[ "`git rev-parse --is-inside-work-tree 2>/dev/null`" = "true" ]]; then
+    # HEADのハッシュを取得
     _head="`git rev-parse --verify -q HEAD 2>/dev/null`"
     if [[ $? -eq 0 ]]; then
-      _remote=`git rev-parse --verify -q origin/\`git_branch\` 2>/dev/null`
+      # origin/ブランチ名のハッシュの取得
+      _remote="`git rev-parse --verify -q origin/\`gbn\` 2>/dev/null`"
       if [[ $? -eq 0 ]]; then
-        if [[ "${_head}" = "${_remote}" ]]; then
-          return
+        # 比較して違ったら、*を表示する
+        if [[ ! "${_head}" = "${_remote}" ]]; then
+          echo -n "*"
         fi
-        echo -n "*"
       fi
     fi
   fi
@@ -101,11 +98,11 @@ alias gco='g checkout'
 alias gpl='g pull'
 alias gdr='gd remotes/origin/master'
 alias gr='g reset HEAD'
-alias glr=glr
 alias gg='g log --pretty=format:"%h %C(yellow)%ad%C(reset) | %s%C(red)%d%C(reset) %C(blue)[%an]%C(reset)" --graph --date=iso'
 alias gb='g branch'
 alias gbr='g branch -r'
 alias gba='g branch -a'
+alias gbn='g rev-parse --abbrev-ref HEAD'
 
 alias pr='play -DapplyEvolutions.default=true run'
 alias pd='play debug -DapplyEvolutions.default=true run'
