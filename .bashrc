@@ -22,9 +22,11 @@ function git_status {
 }
 
 function git_branch_with_format {
-  _branch=`gbn`
-  if [[ -n ${_branch} ]]; then
-    echo "(${_branch})"
+  if [[ "`git rev-parse --is-inside-work-tree 2>/dev/null`" = "true" ]]; then
+    _branch=`gbn`
+    if [[ -n ${_branch} ]]; then
+      echo "(${_branch})"
+    fi
   fi
 }
 
