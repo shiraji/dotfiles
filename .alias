@@ -108,6 +108,7 @@ alias gsts='gst save'
 alias gstp='gst pop'
 alias gsta='gst apply'
 alias gstd='gst drop'
+alias gstl='gst list'
 
 # play用のalias
 alias pr='play -DapplyEvolutions.default=true run'
