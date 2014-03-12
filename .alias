@@ -1,13 +1,15 @@
 # User specific aliases and functions
-alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 case ${OSTYPE} in
   darwin*)
     alias ls='ls -G'
+    alias rm='rmtrash'
     ;;
   linux*)
     alias ls='ls --color=always'
+    mkdir -p $HOME/.Trash
+    alias rm=rmFile
     ;;
 esac
 alias ll='clear;ls -la'
@@ -17,6 +19,10 @@ alias javac="javac -J-Dfile.encoding=UTF-8"
 alias java="java -Dfile.encoding=UTF-8"
 alias cd=cdls
 alias crontab=crontabl
+
+function rmFile {
+  mv $1 $HOME/.Trash
+}
 
 # cd setting. do clear, cd, pwd, and ls -la
 function cdls() {
