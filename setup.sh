@@ -40,6 +40,9 @@ do
 	echo "Create symbolic link: $currentFile"
 
 	if [ "$file" = $VIMRC ]; then
+    # vim74をインストールする
+    bash ./install_vim.sh
+
 		#neobundleをインストールする
 		mkdir -p $HOME/.vim/bundle/
 		git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
