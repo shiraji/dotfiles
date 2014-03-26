@@ -1,12 +1,18 @@
 #!/bin/bash
-cd /usr/local/src
-wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2
-tar jxvf vim-7.4.tar.bz2
-cd vim74
-mkdir patches
+
+SRC_DIR="/usr/local/src"
+VIM74_DIR="/vim74"
+WORK_DIR=${SRC_DIR}${VIM74_DIR}
+
+mkdir -p ${SRC_DIR}
+wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2 -P ${SRC_DIR}
+tar jxvf ${SRC_DIR}/vim-7.4.tar.bz2 -C ${SRC_DIR}
+mkdir -p ${WORK_DIR}/patches
 #http://ftp.vim.org/pub/vim/patches/7.4/
-curl -O 'ftp://ftp.vim.org/pub/vim/patches/7.4/7.4.[001-218]'
-cd ..
-cat patches/7.4.* | patch -p0
-./configure --enable-multibyte --enable-xim --enable-fontset --with-features=big --prefix=$HOME/local
+curl -O 'ftp://ftp.vim.org/pub/vim/patches/7.4/7.4.[001-218]' -o ${WORK_DIR}/patches
+
+# makeとかはcurrentフォルダが重要なので、移動する。
+cd ${WORK_DIR}
+cat ${WORK_DIR}/patches/7.4.* | patch -p0
+${WORK_DIR}/configure --enable-multibyte --enable-xim --enable-fontset --with-features=big --prefix=$HOME/local
 make && make install
