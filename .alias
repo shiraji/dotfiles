@@ -1,4 +1,6 @@
 # User specific aliases and functions
+alias vim='$HOME/local/bin/vim'
+alias vi=vim
 alias cp='cp -i'
 alias mv='mv -i'
 case ${OSTYPE} in
@@ -21,7 +23,7 @@ alias cd=cdls
 alias crontab=crontabl
 
 function rmFile {
-  mv $1 $HOME/.Trash
+  mv $1 $HOME/.Trash/$1.`date +%s`
 }
 
 # cd setting. do clear, cd, pwd, and ls -la
