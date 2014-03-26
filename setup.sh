@@ -41,7 +41,7 @@ do
 
 	if [ "$file" = $VIMRC ]; then
     # vim74をインストールする
-    bash ./install_vim.sh
+    bash ./vim_install.sh
 
 		#neobundleをインストールする
 		mkdir -p $HOME/.vim/bundle/
