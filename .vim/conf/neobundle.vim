@@ -57,6 +57,8 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'jistr/vim-nerdtree-tabs'
 " 一括置換時にハイライト
 NeoBundle 'osyo-manga/vim-over'
+" align
+NeoBundle 'Align'
 
 filetype plugin indent on
 filetype indent on
