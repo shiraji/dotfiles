@@ -22,8 +22,19 @@ bindkey -k k7 select 7
 bindkey -k k8 select 8
 bindkey -k k9 select 9
 bindkey -k k; select 0
-
 bind w windowlist -b
+
+terminfo * k1=\EOP
+terminfo * k2=\EOQ
+terminfo * k3=\EOR
+terminfo * k4=\EOS
+terminfo * k5=\E[15~
+terminfo * k6=\E[17~
+terminfo * k7=\E[18~
+terminfo * k8=\E[19~
+terminfo * k9=\E[20~
+terminfo * F1=\E[23~
+terminfo * F2=\E[24~
 
 #C-a s機能のアンバインドのため
 bind s
