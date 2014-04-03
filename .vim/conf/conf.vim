@@ -154,3 +154,5 @@ map <silent> [Tag]n :tabnext<CR>
 map <silent> [Tag]p :tabprevious<CR>
 " tp 前のタブ
 
+" enter to clear search highlight
+nnoremap <c-l> :noh<CR><CR>
