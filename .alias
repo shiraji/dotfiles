@@ -109,6 +109,7 @@ function gdr() {
     git diff ${_hash}
   else
     echo "${_remotes} does not exist"
+    return 1
   fi
 }
 
