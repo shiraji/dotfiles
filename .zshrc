@@ -46,6 +46,8 @@ plugins=(git, ant, bundler, capistrano, cp, gem, github, history, mvn, perl, pyt
 
 # oh-my-zshのimport
 source $ZSH/oh-my-zsh.sh
+# aliasのimport
+source $HOME/dotfiles/.alias
 
 function rprompt-git-current-branch {
         local name st color
@@ -53,8 +55,8 @@ function rprompt-git-current-branch {
         if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
                 return
         fi
-        name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
-        if [[ -z $name ]]; then
+        name=`gbn 2> /dev/null`
+        if [[ $? -ne 0 ]]; then
                 return
         fi
         st=`git status 2> /dev/null`
@@ -72,8 +74,6 @@ function rprompt-git-current-branch {
         # これをしないと右プロンプトの位置がずれる
         echo "[%{$color%}$name%{$reset_color%}]"
 }
-
-source $HOME/dotfiles/.alias
 
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
 setopt prompt_subst
