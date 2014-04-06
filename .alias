@@ -96,7 +96,7 @@ function gdr() {
   if [ "${_remotes}" = "" ]; then
     _remotes="remotes/origin/"`gbn`
   else
-    # retemos/originがついていなかった場合、remotes/origin/を付与する。
+    # remotes/originがついていなかった場合、remotes/origin/を付与する。
     if [[ "${_remotes}" != remotes/origin* ]]; then
       _remotes="remotes/origin/"${_remotes}
     fi
