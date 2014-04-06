@@ -106,7 +106,7 @@ function gdr() {
   _hash="`git rev-parse --verify -q ${_remotes} 2>/dev/null`"
   if [ "$?" = "0" ]; then
     # git diffをここで行う
-    git diff ${_remotes}
+    git diff ${_hash}
   else
     echo "${_remotes} does not exist"
   fi
