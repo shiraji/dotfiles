@@ -1,5 +1,5 @@
 # User specific aliases and functions
-alias vim='$HOME/local/bin/vim'
+# alias vim='$HOME/local/bin/vim'
 alias vi=vim
 alias cp='cp -i'
 alias mv='mv -i'
@@ -89,11 +89,34 @@ function git_not_pushed {
   fi
 }
 
+function gdr() {
+  # 引数取得
+  _remotes="$1"
+  # 引数がない場合は、今のブランチのリモートを比較対象とする
+  if [ "${_remotes}" = "" ]; then
+    _remotes="remotes/origin/"`gbn`
+  else
+    # retemos/originがついていなかった場合、remotes/origin/を付与する。
+    if [[ "${_remotes}" != remotes/origin* ]]; then
+      _remotes="remotes/origin/"${_remotes}
+    fi
+  fi
+
+  # ブランチの存在確認
+  _hash="`git rev-parse --verify -q ${_remotes} 2>/dev/null`"
+  if [ "$?" = "0" ]; then
+    # git diffをここで行う
+    git diff ${_remotes}
+  else
+    echo "${_remotes} does not exist"
+  fi
+}
+
 # git系のalias
 alias g='git'
 alias gf='g fetch'
 alias gm='g merge'
-alias gd='g diff'
+# alias gd='g diff'
 alias ga='g add'
 alias ga.='ga .'
 alias gcm='g commit -m'
@@ -106,7 +129,7 @@ alias gs='g status'
 alias gco='g checkout'
 alias gpl='g pull origin `gbn`'
 alias gdrm='gd remotes/origin/master'
-alias gdr='gd remotes/origin/`gbn`'
+# alias gdr='gd remotes/origin/`gbn`'
 alias gr='g reset HEAD'
 alias gg='g log --pretty=format:"%h %C(yellow)%ad%C(reset) | %s%C(red)%d%C(reset) %C(blue)[%an]%C(reset)" --graph --date=iso'
 alias gb='g branch'
