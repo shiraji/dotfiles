@@ -113,6 +113,16 @@ function gdr() {
   fi
 }
 
+# http://www.gitignore.io/cli
+function gi() {
+  if [ $# -ne 1 ]; then
+    _param="list"
+  else
+    _param=$@
+  fi
+  curl http://www.gitignore.io/api/${_param}
+}
+
 # git系のalias
 alias g='git'
 alias gf='g fetch'
