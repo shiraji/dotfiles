@@ -78,7 +78,9 @@ function rprompt-git-current-branch {
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
 setopt prompt_subst
 
-PROMPT='[%F{yellow}%n%f%F{red}@%f%F{blue}%m%f %F{green}%~%f]%# '
+PROMPT='
+[%F{yellow}%n%f%F{red}@%f%F{blue}%m%f %F{green}%~%f]
+%# '
 
 RPROMPT='`rprompt-git-current-branch``git_not_pushed`'
 
