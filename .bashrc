@@ -6,6 +6,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 source $HOME/dotfiles/.alias
+source $HOME/dotfiles/.export
 
 function git_status {
 	st=`git status 2> /dev/null`
