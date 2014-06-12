@@ -30,4 +30,4 @@ function git_branch_with_format {
   fi
 }
 
-PS1='\[\033[0;37m\][\[\033[0;33m\]\u\[\033[0;31m\]@\[\033[0;34m\]\h \[\033[01;36m\]\W\[\033[0;37m\]] \[\033[$(git_status)m\]`git_branch_with_format`\[\033[00m\]`git_not_pushed`\$ '
+PS1='\n\[\033[0;37m\][\[\033[0;33m\]\u\[\033[0;31m\]@\[\033[0;34m\]\h \[\033[01;36m\]\w\[\033[0;37m\]] \[\033[$(git_status)m\]`git_branch_with_format`\[\033[00m\]`git_not_pushed`\n\$ '
