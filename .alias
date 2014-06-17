@@ -70,6 +70,34 @@ function glr() {
   git log origin/${_branch}..${_branch}
 }
 
+function git-current-branch-status {
+        local name st color
+
+        if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
+                return
+        fi
+        name=`gbn 2> /dev/null`
+        if [[ $? -ne 0 ]]; then
+                return
+        fi
+        st=`git status 2> /dev/null`
+        if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+                color=${fg[green]}
+        elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
+                color=${fg[yellow]}
+        elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
+                color=${fg_bold[red]}
+        else
+                color=${fg[red]}
+        fi
+
+        changed=`git_not_pushed`
+
+        # %{...%} は囲まれた文字列がエスケープシーケンスであることを明示する
+        # これをしないと右プロンプトの位置がずれる
+        echo "(%{$color%}$name%{$reset_color%}$changed)"
+}
+
 # リモートブランチのヘッドのハッシュと今のHEADを比較する
 function git_not_pushed {
   # git管理下にいるかどうかの確認
