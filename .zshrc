@@ -79,10 +79,8 @@ function rprompt-git-current-branch {
 setopt prompt_subst
 
 PROMPT='
-[%F{yellow}%n%f%F{red}@%f%F{blue}%m%f %F{green}%~%f]
+[%F{yellow}%n%f%F{red}@%f%F{blue}%m%f %F{green}%~%f]`rprompt-git-current-branch``git_not_pushed`
 %# '
-
-RPROMPT='`rprompt-git-current-branch``git_not_pushed`'
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
