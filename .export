@@ -1,4 +1,4 @@
 export EDITOR=vim svn commit
 export SVN_EDITOR=vim
 
-export PATH=/usr/local/bin:/bin:/usr/bin:$HOME/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/play:$HOME/local/bin/:
+export PATH=$PATH:/usr/local/bin:/bin:/usr/bin:$HOME/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/play:$HOME/local/bin/:
