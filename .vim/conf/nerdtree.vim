@@ -69,7 +69,7 @@ let g:NERDTreeShowHidden=1
 "Values: 0 or 1.
 "Default: 0.
 "let g:NERDTreeShowBookmarks=0
-"let g:NERDTreeShowBookmarks=1
+let g:NERDTreeShowBookmarks=1
 
 "NERDTreeのツリーを開く場所、左側か、右側か。
 "Values: "left" or "right"
