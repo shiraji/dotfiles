@@ -181,6 +181,7 @@ alias gstp='gst pop'
 alias gsta='gst apply'
 alias gstd='gst drop'
 alias gstl='gst list'
+alias gsubup='git submodule update --init --recursive'
 
 # play用のalias
 alias pr='play -DapplyEvolutions.default=true run'
