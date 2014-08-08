@@ -1,5 +1,19 @@
 # User specific aliases and functions
 # alias vim='$HOME/local/bin/vim'
+
+function sref() {
+case $SHELL in
+*/zsh)
+   source ~/.zshrc
+   ;;
+*/bash)
+   source ~/.bashrc
+   ;;
+*)
+   # assume something else
+esac
+}
+
 alias vi=vim
 alias cp='cp -i'
 alias mv='mv -i'
