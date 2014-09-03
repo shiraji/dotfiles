@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SRC_DIR="/usr/local/src"
+SRC_DIR="$HOME/src"
 VIM74_DIR="/vim74"
 WORK_DIR=${SRC_DIR}${VIM74_DIR}
 
