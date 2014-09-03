@@ -3,11 +3,16 @@
 set nocompatible
 filetype off
 if has('vim_starting')
+  set nocompatible
+
 	set runtimepath+=~/.vim/bundle/neobundle.vim
-	call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
-NeoBundle 'Shougo/neobundle.vim'
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" NeoBundleの最新版に更新する設定
+NeoBundleFetch 'Shougo/neobundle.vim'
+
 " 非同期処理用プラグイン
 NeoBundle 'Shougo/vimproc', {
   \ 'build' : {
@@ -59,7 +64,12 @@ NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'osyo-manga/vim-over'
 " align
 NeoBundle 'Align'
+" ruby用タグ飛びができるようになる。
+NeoBundle 'majutsushi/tagbar'
+
+call neobundle#end()
 
 filetype plugin indent on
 filetype indent on
 
+NeoBundleCheck
