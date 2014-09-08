@@ -8,7 +8,8 @@ GEMRC=".gemrc"
 VIM_CONF=".vim/conf"
 
 #$HOME以下にある設定ファイル。スペースで分ける。
-DOT_FILES=( .bashrc $VIM_CONF $VIMRC .gitconfig .gitignore $ZSHRC $SCREENRC $TMUXCONF $GEMRC )
+DOT_FILES=( $SCREENRC )
+# DOT_FILES=( .bashrc $VIM_CONF $VIMRC .gitconfig .gitignore $ZSHRC $SCREENRC $TMUXCONF $GEMRC )
 
 for file in ${DOT_FILES[@]}
 do
@@ -62,5 +63,11 @@ do
     # zshのincremetal searchできるようにする
     curl -o ~/.zsh/incr-0.2.zsh -L http://mimosa-pudica.net/src/incr-0.2.zsh
 	fi
+
+  if [ "$file" = $SCREENRC ]; then
+    # screenのソケットの保存先をHOME直下にする
+    mkdir $HOME/.screen
+    chmod 700 $HOME/.screen
+  fi
 
 done
