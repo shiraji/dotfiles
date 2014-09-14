@@ -197,6 +197,12 @@ alias gstd='gst drop'
 alias gstl='gst list'
 alias gsubup='git submodule update --init --recursive'
 
+# tig系のalias
+alias t='tig'
+alias ts='t status'
+alias tl='t log'
+alias td='t diff'
+
 # play用のalias
 alias pr='play -DapplyEvolutions.default=true run'
 alias pd='play debug -DapplyEvolutions.default=true run'
