@@ -8,9 +8,11 @@ GEMRC=".gemrc"
 VIM_CONF=".vim/conf"
 GIT_CONFIG=".gitconfig"
 TIG_DOWNLOAD_DIR="~/tig"
+TIGRC=".tigrc"
 
 #$HOME以下にある設定ファイル。スペースで分ける。
-DOT_FILES=( .bashrc $VIM_CONF $VIMRC $GIT_CONFIG .gitignore $ZSHRC $SCREENRC $TMUXCONF $GEMRC )
+# DOT_FILES=( .bashrc $VIM_CONF $VIMRC $GIT_CONFIG .gitignore $ZSHRC $SCREENRC $TMUXCONF $GEMRC $TIGRC )
+DOT_FILES=( $TIGRC )
 
 for file in ${DOT_FILES[@]}
 do
@@ -71,7 +73,7 @@ do
     chmod 700 $HOME/.screen
   fi
 
-  if [ "file" = $GIT_CONFIG ]; then
+  if [ "$file" = $TIGRC ]; then
     # tigのインストール
     git clone https://github.com/jonas/tig.git $TIG_DOWNLOAD_DIR
     cd $TIG_DOWNLOAD_DIR

@@ -11,3 +11,5 @@
 	interactive = auto
 [mergetool]
 	keepBackup = false
+[gui]
+  encoding = utf-8
