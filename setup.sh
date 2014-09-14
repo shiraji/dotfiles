@@ -13,6 +13,15 @@ TIGRC=".tigrc"
 #$HOME以下にある設定ファイル。スペースで分ける。
 DOT_FILES=( .bashrc $VIM_CONF $VIMRC $GIT_CONFIG .gitignore $ZSHRC $SCREENRC $TMUXCONF $GEMRC $TIGRC )
 
+# もし、パラメータが渡されていたら、そちらを利用する。
+if [ $# -gt 0 ]; then
+  DOT_FILES=()
+  for var in "$@"
+  do
+    DOT_FILES+=($var)
+  done
+fi
+
 for file in ${DOT_FILES[@]}
 do
 	currentFile=$HOME/$file
