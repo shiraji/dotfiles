@@ -11,8 +11,7 @@ TIG_DOWNLOAD_DIR="~/tig"
 TIGRC=".tigrc"
 
 #$HOME以下にある設定ファイル。スペースで分ける。
-# DOT_FILES=( .bashrc $VIM_CONF $VIMRC $GIT_CONFIG .gitignore $ZSHRC $SCREENRC $TMUXCONF $GEMRC $TIGRC )
-DOT_FILES=( $TIGRC )
+DOT_FILES=( .bashrc $VIM_CONF $VIMRC $GIT_CONFIG .gitignore $ZSHRC $SCREENRC $TMUXCONF $GEMRC $TIGRC )
 
 for file in ${DOT_FILES[@]}
 do
