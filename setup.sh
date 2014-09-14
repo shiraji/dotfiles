@@ -6,10 +6,11 @@ SCREENRC=".screenrc"
 TMUXCONF=".tmux.conf"
 GEMRC=".gemrc"
 VIM_CONF=".vim/conf"
+GIT_CONFIG=".gitconfig"
+TIG_DOWNLOAD_DIR="~/tig"
 
 #$HOME以下にある設定ファイル。スペースで分ける。
-DOT_FILES=( $SCREENRC )
-# DOT_FILES=( .bashrc $VIM_CONF $VIMRC .gitconfig .gitignore $ZSHRC $SCREENRC $TMUXCONF $GEMRC )
+DOT_FILES=( .bashrc $VIM_CONF $VIMRC $GIT_CONFIG .gitignore $ZSHRC $SCREENRC $TMUXCONF $GEMRC )
 
 for file in ${DOT_FILES[@]}
 do
@@ -68,6 +69,15 @@ do
     # screenのソケットの保存先をHOME直下にする
     mkdir $HOME/.screen
     chmod 700 $HOME/.screen
+  fi
+
+  if [ "file" = $GIT_CONFIG ]; then
+    # tigのインストール
+    git clone https://github.com/jonas/tig.git $TIG_DOWNLOAD_DIR
+    cd $TIG_DOWNLOAD_DIR
+    make
+    make install
+    cd ~/dotfiles
   fi
 
 done
