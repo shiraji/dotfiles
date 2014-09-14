@@ -6,3 +6,8 @@ set status-view = status:display=long file-name:display=always
 
 # 差分の前後の表示行数（diff-context)を指定
 set diff-context = 6
+
+# スペースは無視
+set ignore-space = all
+
+
