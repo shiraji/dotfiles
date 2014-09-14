@@ -1,5 +1,5 @@
 # User specific aliases and functions
-# alias vim='$HOME/local/bin/vim'
+alias vim='$HOME/local/bin/vim'
 
 function sref() {
 case $SHELL in
