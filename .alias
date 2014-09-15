@@ -165,11 +165,17 @@ function gi() {
   curl https://www.gitignore.io/api/${_param}
 }
 
+# tig系のalias
+alias t='tig'
+alias ts='t status'
+alias tl='t log'
+alias td='t diff'
+
 # git系のalias
 alias g='git'
 alias gf='g fetch'
 alias gm='g merge'
-alias gd='g diff'
+alias gd='td'
 alias gdc='g diff --cached'
 alias ga='g add'
 alias ga.='ga .'
@@ -178,8 +184,8 @@ alias gcam='g commit --amend -m'
 alias gca='g commit -a'
 alias gbn='g rev-parse --abbrev-ref HEAD'
 alias gp='g push origin `gbn`'
-alias gl='g log --stat'
-alias gs='g status'
+alias gl='tl'
+alias gs='ts'
 alias gco='g checkout'
 alias gpl='g pull origin `gbn`'
 alias gdrm='gdr remotes/origin/master'
@@ -196,12 +202,6 @@ alias gsta='gst apply'
 alias gstd='gst drop'
 alias gstl='gst list'
 alias gsubup='git submodule update --init --recursive'
-
-# tig系のalias
-alias t='tig'
-alias ts='t status'
-alias tl='t log'
-alias td='t diff'
 
 # play用のalias
 alias pr='play -DapplyEvolutions.default=true run'
