@@ -30,7 +30,7 @@ do
   fi
 
   currentFile=$HOME/$file
-  if [ -a $currentFile ]; then
+  if [ -e $currentFile ]; then
     if [ ! -L $currentFile ]; then
       #シンボリックリンクでなかったら、ファイルをバックアップ。
       backupFile=$currentFile.`date "+%Y%m%d%H%M%S"`
