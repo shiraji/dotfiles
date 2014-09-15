@@ -162,7 +162,7 @@ function gi() {
   else
     _param=$@
   fi
-  curl http://www.gitignore.io/api/${_param}
+  curl https://www.gitignore.io/api/${_param}
 }
 
 # git系のalias
