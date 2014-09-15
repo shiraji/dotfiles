@@ -24,6 +24,11 @@ fi
 
 for file in ${DOT_FILES[@]}
 do
+  if [ ! -e $file ]; then
+    echo "$file does not exist"
+    continue
+  fi
+
   currentFile=$HOME/$file
   if [ -a $currentFile ]; then
     if [ ! -L $currentFile ]; then
