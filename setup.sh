@@ -22,14 +22,8 @@ if [ $# -gt 0 ]; then
   done
 fi
 
-for file in ${DOT_FILES[@]}
-do
-  if [ ! -e $file ]; then
-    echo "$file does not exist"
-    continue
-  fi
-
-  currentFile=$HOME/$file
+__handule_current_file() {
+  currentFile=$1
   if [ -e $currentFile ]; then
     if [ ! -L $currentFile ]; then
       #シンボリックリンクでなかったら、ファイルをバックアップ。
@@ -41,58 +35,89 @@ do
     unlink $currentFile
     echo "Delete $currentFile"
   fi
-  #リンクを張る
+}
 
-  #絶対パスを探す
-  _dir=$(dirname $HOME/dotfiles/setup.sh)
-  _currentFileDir=$(dirname ${currentFile})
-
+__create_current_file_dir() {
+  _currentFileDir=$1
   #シンボリックリンク作成対象のフォルダが存在していない場合、フォルダを作成する。
   if [ ! -d "${_currentFileDir}" ]; then
     mkdir -p ${_currentFileDir}
     echo "Create directory: ${_currentFileDir}"
   fi
+}
 
+__install_vimrc() {
+  # vim74をインストールする
+  bash ./vim_install.sh
+
+  #neobundleをインストールする
+  mkdir -p $HOME/.vim/bundle/
+  git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+  bash ./neobundle_install.sh
+
+  #NERDTreeのプラグインをインストールする。
+  git clone git://gist.github.com/205807 ~/.vim/bundle/nerdtree/nerdtree_plugin/205807
+}
+
+__install_zshrc() {
+  #oh-my-zshの設定を持ってくる。
+  git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+
+  # .zshフォルダの作成
+  mkdir -p ~/.zsh/
+
+  # zshのincremetal searchできるようにする
+  curl -o ~/.zsh/incr-0.2.zsh -L http://mimosa-pudica.net/src/incr-0.2.zsh
+}
+
+__install_screenrc() {
+  # screenのソケットの保存先をHOME直下にする
+  mkdir $HOME/.screen
+  chmod 700 $HOME/.screen
+}
+
+__install_tigrc() {
+  # tigのインストール
+  git clone https://github.com/jonas/tig.git $TIG_DOWNLOAD_DIR
+  cd $TIG_DOWNLOAD_DIR
+  make
+  make install
+  cd ~/dotfiles
+}
+
+for file in ${DOT_FILES[@]}
+do
+  # バリデーション
+  if [ ! -e $file ]; then
+    echo "$file does not exist"
+    continue
+  fi
+
+  currentFile=$HOME/$file
+  __handule_current_file $currentFile
+
+  #絶対パスを探す
+  _dir=$(dirname $HOME/dotfiles/setup.sh)
+  __create_current_file_dir $(dirname ${currentFile})
+
+  #リンクを張る
   ln -s ${_dir}/$file $currentFile
   echo "Create symbolic link: $currentFile"
 
   if [ "$file" = $VIMRC ]; then
-    # vim74をインストールする
-    bash ./vim_install.sh
-
-    #neobundleをインストールする
-    mkdir -p $HOME/.vim/bundle/
-    git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-    bash ./neobundle_install.sh
-
-    #NERDTreeのプラグインをインストールする。
-    git clone git://gist.github.com/205807 ~/.vim/bundle/nerdtree/nerdtree_plugin/205807
+    __install_vimrc_related
   fi
 
   if [ "$file" = $ZSHRC ]; then
-    #oh-my-zshの設定を持ってくる。
-    git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-
-    # .zshフォルダの作成
-    mkdir -p ~/.zsh/
-
-    # zshのincremetal searchできるようにする
-    curl -o ~/.zsh/incr-0.2.zsh -L http://mimosa-pudica.net/src/incr-0.2.zsh
+    __install_zsh
   fi
 
   if [ "$file" = $SCREENRC ]; then
-    # screenのソケットの保存先をHOME直下にする
-    mkdir $HOME/.screen
-    chmod 700 $HOME/.screen
+    __install_screenrc
   fi
 
   if [ "$file" = $TIGRC ]; then
-    # tigのインストール
-    git clone https://github.com/jonas/tig.git $TIG_DOWNLOAD_DIR
-    cd $TIG_DOWNLOAD_DIR
-    make
-    make install
-    cd ~/dotfiles
+    __install_tigrc
   fi
 
 done
