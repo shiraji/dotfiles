@@ -170,6 +170,7 @@ alias t='tig'
 alias ts='t status'
 alias tl='t log'
 alias td='t diff'
+alias tst='t stash'
 
 # git系のalias
 alias g='git'
@@ -195,12 +196,12 @@ alias gg='g log --pretty=format:"%h %C(yellow)%ad%C(reset) | %s%C(red)%d%C(reset
 alias gb='g branch'
 alias gbr='g branch -r'
 alias gba='g branch -av'
-alias gst='g stash'
-alias gsts='gst save'
-alias gstp='gst pop'
-alias gsta='gst apply'
-alias gstd='gst drop'
-alias gstl='gst list'
+alias gst='tst'
+alias gsts='g stash save'
+alias gstp='g stash pop'
+alias gsta='g stash apply'
+alias gstd='g stash drop'
+alias gstl='g stash list'
 alias gsubup='git submodule update --init --recursive'
 
 # play用のalias
