@@ -109,9 +109,19 @@ setopt complete_aliases
 setopt noautoremoveslash
 
 # propmtの設定
-PROMPT='
-[%F{yellow}%n%f%F{red}@%f%F{blue}%m%f %F{cyan}%~%f]`git-current-branch-status`
+function set_prompt() {
+  if [ -z "$SHORT_PROMPT" ]; then
+    PROMPT='[%F{yellow}%n%f%F{red}@%f%F{blue}%m%f %F{cyan}%~%f]`git-current-branch-status`
 %(?.%F{green}.%F{red})%#%f '
+  else
+    PROMPT='%(?.%F{green}.%F{red})%#%f '
+  fi
+}
+
+precmd() {
+  set_prompt
+}
+
 SPROMPT="%r is correct? [a,e,n,y]: "
 
 # Finally, make sure the terminal is in application mode, when zle is
