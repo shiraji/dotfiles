@@ -1,4 +1,3 @@
-export LANG=ja_JP.UTF-8
 HISTFILE=$HOME/.zsh-history
 HISTSIZE=100000
 SAVEHIST=100000
@@ -79,9 +78,6 @@ zstyle ':completion:*:default' menu select=1
 
 ## 補完候補の色づけ
 #eval `dircolors`
-export LSCOLORS=ExFxCxdxBxegedabagacad
-export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-export ZLS_COLORS=$LS_COLORS
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 ## ディレクトリ名だけで cd
@@ -102,8 +98,7 @@ setopt complete_aliases
 ## 最後のスラッシュを自動的に削除しない
 setopt noautoremoveslash
 
-# propmt
-
+# propmtの設定
 PROMPT='
 [%F{yellow}%n%f%F{red}@%f%F{blue}%m%f %F{cyan}%~%f]`git-current-branch-status`
 %(?.%F{green}.%F{red})%#%f '
@@ -122,7 +117,11 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-finish
 fi
 
-# Customize to your needs...
+# export関連をimport
 source $HOME/dotfiles/.export
 
+# alias関連をimport
 source $HOME/dotfiles/.alias
+
+# incr.zshのimport
+source $HOME/.zsh/incr-0.2.zsh
