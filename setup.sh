@@ -59,17 +59,6 @@ __install_vimrc() {
   git clone git://gist.github.com/205807 ~/.vim/bundle/nerdtree/nerdtree_plugin/205807
 }
 
-__install_zshrc() {
-  #oh-my-zshの設定を持ってくる。
-  git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-
-  # .zshフォルダの作成
-  mkdir -p ~/.zsh/
-
-  # zshのincremetal searchできるようにする
-  curl -o ~/.zsh/incr-0.2.zsh -L http://mimosa-pudica.net/src/incr-0.2.zsh
-}
-
 __install_screenrc() {
   # screenのソケットの保存先をHOME直下にする
   mkdir $HOME/.screen
@@ -106,10 +95,6 @@ do
 
   if [ "$file" = $VIMRC ]; then
     __install_vimrc_related
-  fi
-
-  if [ "$file" = $ZSHRC ]; then
-    __install_zsh
   fi
 
   if [ "$file" = $SCREENRC ]; then
