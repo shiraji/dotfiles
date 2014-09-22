@@ -1,3 +1,6 @@
+# incr.zshのimport
+source $HOME/.zsh/incr-0.2.zsh
+
 HISTFILE=$HOME/.zsh-history
 HISTSIZE=100000
 SAVEHIST=100000
@@ -122,6 +125,3 @@ source $HOME/dotfiles/.export
 
 # alias関連をimport
 source $HOME/dotfiles/.alias
-
-# incr.zshのimport
-source $HOME/.zsh/incr-0.2.zsh
