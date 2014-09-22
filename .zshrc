@@ -3,8 +3,13 @@
 # 後にすると、補完機能が使えなくなる。
 source $HOME/.zsh/incr-0.2.zsh
 
+# 履歴ファイルの保存先
 HISTFILE=$HOME/.zsh-history
+
+# メモリに保存される履歴の件数。(保存数だけ履歴を検索できる)
 HISTSIZE=100000
+
+# HISTFILE で指定したファイルに保存される履歴の件数
 SAVEHIST=100000
 
 # zsh: do you wish to see all NNN possibilitiesをサイズではなく、
@@ -114,14 +119,17 @@ function set_prompt() {
     PROMPT='[%F{yellow}%n%f%F{red}@%f%F{blue}%m%f %F{cyan}%~%f]`git-current-branch-status`
 %(?.%F{green}.%F{red})%#%f '
   else
+    # SHORT_PROMPTが設定されていた場合、詳細情報を表示しない。
     PROMPT='%(?.%F{green}.%F{red})%#%f '
   fi
 }
 
+#プロンプトを表示直前に呼び出す
 precmd() {
   set_prompt
 }
 
+# コマンドがない場合に呼ばれる。abort/edit/no/yesが選択肢。
 SPROMPT="%r is correct? [a,e,n,y]: "
 
 # Finally, make sure the terminal is in application mode, when zle is
