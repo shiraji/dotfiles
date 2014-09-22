@@ -7,6 +7,11 @@ HISTFILE=$HOME/.zsh-history
 HISTSIZE=100000
 SAVEHIST=100000
 
+# zsh: do you wish to see all NNN possibilitiesをサイズではなく、
+# 画面に表示できるかどうかの判別するようにする。
+# 表示できない場合は、too many matches.にする。
+LISTMAX=0
+
 ## 補完機能の強化
 autoload -U compinit
 compinit
