@@ -1,4 +1,6 @@
 # incr.zshのimport
+# 基本、incrは補完設定より前に読み込むこと。
+# 後にすると、補完機能が使えなくなる。
 source $HOME/.zsh/incr-0.2.zsh
 
 HISTFILE=$HOME/.zsh-history
