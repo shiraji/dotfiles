@@ -23,7 +23,9 @@ set expandtab  " tabをスペースに置換。
 set backspace=indent,eol,start		" バックスペースで特殊記号も削除可能に
 set formatoptions=lmoq			" 整形オプション，マルチバイト系を追加
 set whichwrap=b,s,h,s,<,>,[,]		" カーソルを行頭、行末で止まらないようにする
-set clipboard=unnamed,autoselect		" バッファにクリップボードを利用する
+if $TMUX == ''
+  set clipboard=unnamed,autoselect		" バッファにクリップボードを利用する
+endif
 " set paste   " 常にペーストモード
 set pastetoggle=<F11>   " ペーストモードを簡単にできるようにF11
 
