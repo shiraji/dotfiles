@@ -106,7 +106,7 @@ do
   fi
 
   if [ "$file" = $ZSHRC ]; then
-    __install_zsh
+    __install_zshrc
   fi
 
   if [ "$file" = $SCREENRC ]; then
