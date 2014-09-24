@@ -7,7 +7,7 @@ TMUXCONF=".tmux.conf"
 GEMRC=".gemrc"
 VIM_CONF=".vim/conf"
 GIT_CONFIG=".gitconfig"
-TIG_DOWNLOAD_DIR="~/tig"
+TIG_DOWNLOAD_DIR="$HOME/tig"
 TIGRC=".tigrc"
 
 #$HOME以下にある設定ファイル。スペースで分ける。
