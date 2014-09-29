@@ -147,7 +147,12 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
 fi
 
 # export関連をimport
-source $HOME/dotfiles/.export
+source $HOME/dotfiles/export
 
 # alias関連をimport
-source $HOME/dotfiles/.alias
+source $HOME/dotfiles/alias
+
+# それぞれの環境で必要な設定を読み込む
+if [ -f $HOME/dotfiles/local ]; then
+  source $HOME/dotfiles/local
+fi

@@ -1,17 +1,19 @@
 #!/bin/bash
 
-VIMRC=".vimrc"
-ZSHRC=".zshrc"
-SCREENRC=".screenrc"
-TMUXCONF=".tmux.conf"
-GEMRC=".gemrc"
-VIM_CONF=".vim/conf"
-GIT_CONFIG=".gitconfig"
+VIMRC="vimrc"
+ZSHRC="zshrc"
+SCREENRC="screenrc"
+TMUXCONF="tmux.conf"
+GEMRC="gemrc"
+VIM_CONF="vim/conf"
+GIT_CONFIG="gitconfig"
 TIG_DOWNLOAD_DIR="$HOME/tig"
-TIGRC=".tigrc"
+TIGRC="tigrc"
+GIT_IGNORE="gitignore"
+BASHRC="bashrc"
 
 #$HOME以下にある設定ファイル。スペースで分ける。
-DOT_FILES=( .bashrc $VIM_CONF $VIMRC $GIT_CONFIG .gitignore $ZSHRC $SCREENRC $TMUXCONF $GEMRC $TIGRC )
+DOT_FILES=( $BASHRC $VIM_CONF $VIMRC $GIT_CONFIG $GIT_IGNORE $ZSHRC $SCREENRC $TMUXCONF $GEMRC $TIGRC )
 
 # もし、パラメータが渡されていたら、そちらを利用する。
 if [ $# -gt 0 ]; then
@@ -24,7 +26,6 @@ fi
 
 __handule_current_file() {
   currentFile=$1
-  if [ -e $currentFile ]; then
     if [ ! -L $currentFile ]; then
       #シンボリックリンクでなかったら、ファイルをバックアップ。
       backupFile=$currentFile.`date "+%Y%m%d%H%M%S"`
@@ -34,7 +35,6 @@ __handule_current_file() {
     #ファイルの削除。
     unlink $currentFile
     echo "Delete $currentFile"
-  fi
 }
 
 __create_current_file_dir() {
@@ -46,7 +46,7 @@ __create_current_file_dir() {
   fi
 }
 
-__install_vimrc() {
+__install_vim() {
   # vim74をインストールする
   bash ./vim_install.sh
 
@@ -77,8 +77,7 @@ __install_tigrc() {
   # tigのインストール
   git clone https://github.com/jonas/tig.git $TIG_DOWNLOAD_DIR
   cd $TIG_DOWNLOAD_DIR
-  make
-  make install
+  make && make install
   cd ~/dotfiles
 }
 
@@ -90,7 +89,7 @@ do
     continue
   fi
 
-  currentFile=$HOME/$file
+  currentFile=$HOME/.$file
   __handule_current_file $currentFile
 
   #絶対パスを探す
@@ -102,7 +101,7 @@ do
   echo "Create symbolic link: $currentFile"
 
   if [ "$file" = $VIMRC ]; then
-    __install_vimrc_related
+    __install_vim
   fi
 
   if [ "$file" = $ZSHRC ]; then

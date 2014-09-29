@@ -5,8 +5,11 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-source $HOME/dotfiles/.alias
-source $HOME/dotfiles/.export
+source $HOME/dotfiles/alias
+source $HOME/dotfiles/export
+if [ -f $HOME/dotfiles/local ]; then
+  source $HOME/dotfiles/local
+fi
 
 function git_status {
 	st=`git status 2> /dev/null`
