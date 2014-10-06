@@ -24,7 +24,7 @@ if [ $# -gt 0 ]; then
   done
 fi
 
-__handule_current_file() {
+__prepare_current_file() {
   currentFile=$1
     if [ ! -L $currentFile ]; then
       #シンボリックリンクでなかったら、ファイルをバックアップ。
@@ -90,7 +90,7 @@ do
   fi
 
   currentFile=$HOME/.$file
-  __handule_current_file $currentFile
+  __prepare_current_file $currentFile
 
   #絶対パスを探す
   _dir=$(dirname $HOME/dotfiles/setup.sh)
