@@ -12,15 +12,31 @@ TIGRC="tigrc"
 GIT_IGNORE="gitignore"
 BASHRC="bashrc"
 
+_only_file_copy=false
+
 #$HOME以下にある設定ファイル。スペースで分ける。
 DOT_FILES=( $BASHRC $VIM_CONF $VIMRC $GIT_CONFIG $GIT_IGNORE $ZSHRC $SCREENRC $TMUXCONF $GEMRC $TIGRC )
+
+__parse_parameters() {
+  var=$1
+  case $var in
+    -o|--only-file-copy)
+    _only_file_copy=true
+    shift
+    ;;
+    *)
+    DOT_FILES+=($var)
+    shift
+    ;;
+  esac
+}
 
 # もし、パラメータが渡されていたら、そちらを利用する。
 if [ $# -gt 0 ]; then
   DOT_FILES=()
   for var in "$@"
   do
-    DOT_FILES+=($var)
+    __parse_parameters $var
   done
 fi
 
@@ -99,6 +115,11 @@ do
   #リンクを張る
   ln -s ${_dir}/$file $currentFile
   echo "Create symbolic link: $currentFile"
+
+  # ファイルコピーだけなら、ループに戻る
+  if [ "$_only_file_copy" = true ]; then
+    continue
+  fi
 
   if [ "$file" = $VIMRC ]; then
     __install_vim
