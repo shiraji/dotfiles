@@ -35,6 +35,7 @@ alias javac="javac -J-Dfile.encoding=UTF-8"
 alias java="java -Dfile.encoding=UTF-8"
 alias cd=cdls
 alias crontab=crontabl
+alias p="peco"
 
 function rmFile {
   mv $1 $HOME/.Trash/$1.`date +%s`
