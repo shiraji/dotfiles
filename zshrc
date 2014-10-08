@@ -163,6 +163,6 @@ source $HOME/dotfiles/export
 source $HOME/dotfiles/alias
 
 # それぞれの環境で必要な設定を読み込む
-if [ -f $HOME/dotfiles/local ]; then
-  source $HOME/dotfiles/local
+if [ -f $HOME/dotfiles/local/zshrc ]; then
+  source $HOME/dotfiles/local/zshrc
 fi

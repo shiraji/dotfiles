@@ -7,8 +7,8 @@ fi
 
 source $HOME/dotfiles/alias
 source $HOME/dotfiles/export
-if [ -f $HOME/dotfiles/local ]; then
-  source $HOME/dotfiles/local
+if [ -f $HOME/dotfiles/local/bashrc ]; then
+  source $HOME/dotfiles/local/bashrc
 fi
 
 function git_status {

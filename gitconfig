@@ -1,15 +1,17 @@
 [user]
-	name = shiraji
-	email = isogai.shiraji@gmail.com
+  name = shiraji
+  email = isogai.shiraji@gmail.com
 [core]
-	excludesfile = ~/.gitignore
-	editor = vim -c \"set fenc=utf-8\"
+  excludesfile = ~/.gitignore
+  editor = vim -c \"set fenc=utf-8\"
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
 [mergetool]
-	keepBackup = false
+  keepBackup = false
 [gui]
   encoding = utf-8
+[include]
+  path = ~/dotfiles/local/gitconfig
