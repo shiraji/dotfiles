@@ -1,2 +1,2 @@
 # このファイルはdotfilesに対する.gitignoreです。
-local
+# local/*
