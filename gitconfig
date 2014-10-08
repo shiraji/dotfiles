@@ -1,6 +1,3 @@
-[user]
-  name = shiraji
-  email = isogai.shiraji@gmail.com
 [core]
   excludesfile = ~/.gitignore
   editor = vim -c \"set fenc=utf-8\"
