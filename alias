@@ -206,6 +206,7 @@ alias gsta='g stash apply'
 alias gstd='g stash drop'
 alias gstl='g stash list'
 alias gsubup='git submodule update --init --recursive'
+alias gcl='git config --list'
 
 # play用のalias
 alias pr='play -DapplyEvolutions.default=true run'
