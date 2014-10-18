@@ -1,5 +1,7 @@
 # User specific aliases and functions
-alias vim='$HOME/local/bin/vim'
+if [ -f '$HOME/local/bin/vim' ]; then
+  alias vim='$HOME/local/bin/vim'
+fi
 
 function sref() {
 case $SHELL in
@@ -43,9 +45,9 @@ function rmFile {
 
 # cd setting. do clear, cd, pwd, and ls -la
 function cdls() {
-	clear;
-	\cd $1;
-	echo -e '\e[36m'`pwd`'\e[m';
+  clear;
+  \cd $1;
+  echo -e '\e[36m'`pwd`'\e[m';
 case ${OSTYPE} in
   darwin*)
     ls -la
@@ -59,7 +61,7 @@ esac
 _vim_version=`vim --version | head -1 | sed 's/^.*\ \([0-9]\)\.\([0-9]\)\ .*$/\1\2/'`
 _less_path='/usr/share/vim/vim'$_vim_version'/macros/less.sh'
 if [ -f $_less_path ]; then
-	alias lesss=$_less_path
+  alias lesss=$_less_path
 fi
 
 # crontab設定後crontab -lをする
