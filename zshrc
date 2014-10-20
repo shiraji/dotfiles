@@ -157,10 +157,10 @@ zle -N peco-select-history
 bindkey '^r' peco-select-history
 
 # export関連をimport
-source $HOME/dotfiles/export
+source $HOME/dotfiles/shell/export
 
 # alias関連をimport
-source $HOME/dotfiles/alias/alias
+source $HOME/dotfiles/shell/alias
 
 # それぞれの環境で必要な設定を読み込む
 if [ -f $HOME/dotfiles/local/zshrc ]; then
