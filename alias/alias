@@ -1,0 +1,93 @@
+# User specific aliases and functions
+if [ -f '$HOME/local/bin/vim' ]; then
+  alias vim='$HOME/local/bin/vim'
+fi
+
+function sref() {
+case $SHELL in
+*/zsh)
+   source ~/.zshrc
+   ;;
+*/bash)
+   source ~/.bashrc
+   ;;
+*)
+   # assume something else
+esac
+}
+
+case ${OSTYPE} in
+  darwin*)
+    alias ls='ls -G'
+    alias rm='rmtrash'
+    ;;
+  linux*)
+    alias ls='ls --color=always'
+    mkdir -p $HOME/.Trash
+    alias rm=rmFile
+    ;;
+esac
+
+function rmFile {
+  mv $1 $HOME/.Trash/$1.`date +%s`
+}
+
+alias vi=vim
+alias cp='cp -i'
+alias mv='mv -i'
+alias ll='clear;ls -la'
+alias grep='grep --color=always'
+alias cd=cdls
+alias crontab=crontabl
+alias p="peco"
+
+# cd setting. do clear, cd, pwd, and ls -la
+function cdls() {
+  clear;
+  \cd $1;
+  echo -e '\e[36m'`pwd`'\e[m';
+case ${OSTYPE} in
+  darwin*)
+    ls -la
+    ;;
+  linux*)
+    ls -la | less -EFR;
+    ;;
+esac
+}
+
+# vimのlessを使うように設定
+_vim_version=`vim --version | head -1 | sed 's/^.*\ \([0-9]\)\.\([0-9]\)\ .*$/\1\2/'`
+_less_path='/usr/share/vim/vim'$_vim_version'/macros/less.sh'
+if [ -f $_less_path ]; then
+  alias lesss=$_less_path
+fi
+
+# crontab設定後crontab -lをする
+function crontabl() {
+  if [ $# -gt 1 ]; then
+    # 複数パラメータがある場合はそのまま。
+    \crontab $@
+  else
+    if [ "$1" != "-r" ]; then
+      if [ "$1" != "-l" ]; then
+        \crontab $1;
+      fi
+      \crontab -l;
+    else
+      echo "'crontab -r' is not acceptable "
+    fi
+  fi
+}
+
+# git関連のaliasを読み込む
+source $HOME/dotfiles/alias/alias_git
+
+# play関連のaliasを読み込む
+source $HOME/dotfiles/alias/alias_play
+
+# svn関連のaliasを読み込む
+source $HOME/dotfiles/alias/alias_svn
+
+# java関連のaliasを読み込む
+source $HOME/dotfiles/alias/alias_java

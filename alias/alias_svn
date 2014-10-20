@@ -1,0 +1,2 @@
+export EDITOR=vim svn commit
+export SVN_EDITOR=vim

@@ -1,86 +1,3 @@
-# User specific aliases and functions
-if [ -f '$HOME/local/bin/vim' ]; then
-  alias vim='$HOME/local/bin/vim'
-fi
-
-function sref() {
-case $SHELL in
-*/zsh)
-   source ~/.zshrc
-   ;;
-*/bash)
-   source ~/.bashrc
-   ;;
-*)
-   # assume something else
-esac
-}
-
-alias vi=vim
-alias cp='cp -i'
-alias mv='mv -i'
-case ${OSTYPE} in
-  darwin*)
-    alias ls='ls -G'
-    alias rm='rmtrash'
-    ;;
-  linux*)
-    alias ls='ls --color=always'
-    mkdir -p $HOME/.Trash
-    alias rm=rmFile
-    ;;
-esac
-alias ll='clear;ls -la'
-alias grep='grep --color=always'
-alias vi='vim'
-alias javac="javac -J-Dfile.encoding=UTF-8"
-alias java="java -Dfile.encoding=UTF-8"
-alias cd=cdls
-alias crontab=crontabl
-alias p="peco"
-
-function rmFile {
-  mv $1 $HOME/.Trash/$1.`date +%s`
-}
-
-# cd setting. do clear, cd, pwd, and ls -la
-function cdls() {
-  clear;
-  \cd $1;
-  echo -e '\e[36m'`pwd`'\e[m';
-case ${OSTYPE} in
-  darwin*)
-    ls -la
-    ;;
-  linux*)
-    ls -la | less -EFR;
-    ;;
-esac
-}
-# vimのlessを使うように設定
-_vim_version=`vim --version | head -1 | sed 's/^.*\ \([0-9]\)\.\([0-9]\)\ .*$/\1\2/'`
-_less_path='/usr/share/vim/vim'$_vim_version'/macros/less.sh'
-if [ -f $_less_path ]; then
-  alias lesss=$_less_path
-fi
-
-# crontab設定後crontab -lをする
-function crontabl() {
-  if [ $# -gt 1 ]; then
-    # 複数パラメータがある場合はそのまま。
-    \crontab $@
-  else
-    if [ "$1" != "-r" ]; then
-      if [ "$1" != "-l" ]; then
-        \crontab $1;
-      fi
-      \crontab -l;
-    else
-      echo "'crontab -r' is not acceptable "
-    fi
-  fi
-}
-
 # リモートブランチとのログの差分表示
 function glr() {
   _branch=`gbn`
@@ -88,31 +5,31 @@ function glr() {
 }
 
 function git-current-branch-status {
-        local name st color
+  local name st color
 
-        if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
-                return
-        fi
-        name=`gbn 2> /dev/null`
-        if [[ $? -ne 0 ]]; then
-                return
-        fi
-        st=`git status 2> /dev/null`
-        if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-                color=${fg[green]}
-        elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
-                color=${fg[yellow]}
-        elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
-                color=${fg_bold[red]}
-        else
-                color=${fg[red]}
-        fi
+  if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
+    return
+  fi
+  name=`gbn 2> /dev/null`
+  if [[ $? -ne 0 ]]; then
+    return
+  fi
+  st=`git status 2> /dev/null`
+  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+    color=${fg[green]}
+  elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
+    color=${fg[yellow]}
+  elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
+    color=${fg_bold[red]}
+  else
+    color=${fg[red]}
+  fi
 
-        changed=`git_not_pushed`
+  changed=`git_not_pushed`
 
-        # %{...%} は囲まれた文字列がエスケープシーケンスであることを明示する
-        # これをしないと右プロンプトの位置がずれる
-        echo "(%{$color%}$name%{$reset_color%}$changed)"
+  # %{...%} は囲まれた文字列がエスケープシーケンスであることを明示する
+  # これをしないと右プロンプトの位置がずれる
+  echo "(%{$color%}$name%{$reset_color%}$changed)"
 }
 
 # リモートブランチのヘッドのハッシュと今のHEADを比較する
@@ -207,14 +124,3 @@ alias gstd='g stash drop'
 alias gstl='g stash list'
 alias gsubup='git submodule update --init --recursive'
 alias gcl='git config --list'
-
-# play用のalias
-alias pr='play -DapplyEvolutions.default=true run'
-alias pd='play debug -DapplyEvolutions.default=true run'
-alias pt='play test'
-alias pc='play compile'
-alias pcc='play clean compile'
-alias pcr='pcc;pr'
-
-export EDITOR=vim svn commit
-export SVN_EDITOR=vim

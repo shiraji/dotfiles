@@ -1,0 +1,7 @@
+# play用のalias
+alias pr='play -DapplyEvolutions.default=true run'
+alias pd='play debug -DapplyEvolutions.default=true run'
+alias pt='play test'
+alias pc='play compile'
+alias pcc='play clean compile'
+alias pcr='pcc;pr'

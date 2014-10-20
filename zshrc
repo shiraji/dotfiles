@@ -160,7 +160,7 @@ bindkey '^r' peco-select-history
 source $HOME/dotfiles/export
 
 # alias関連をimport
-source $HOME/dotfiles/alias
+source $HOME/dotfiles/alias/alias
 
 # それぞれの環境で必要な設定を読み込む
 if [ -f $HOME/dotfiles/local/zshrc ]; then
