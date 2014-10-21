@@ -81,13 +81,13 @@ function crontabl() {
 }
 
 # git関連のaliasを読み込む
-source $HOME/dotfiles/alias/alias_git
+source $HOME/dotfiles/shell/alias_git
 
 # play関連のaliasを読み込む
-source $HOME/dotfiles/alias/alias_play
+source $HOME/dotfiles/shell/alias_play
 
 # svn関連のaliasを読み込む
-source $HOME/dotfiles/alias/alias_svn
+source $HOME/dotfiles/shell/alias_svn
 
 # java関連のaliasを読み込む
-source $HOME/dotfiles/alias/alias_java
+source $HOME/dotfiles/shell/alias_java
