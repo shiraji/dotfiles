@@ -158,3 +158,13 @@ map <silent> [Tag]p :tabprevious<CR>
 
 " enter to clear search highlight
 nnoremap <ESC><ESC> :noh<CR><CR>
+
+" arrow key使えないように
+noremap  <Up> ""
+noremap! <Up> <Esc>
+noremap  <Down> ""
+noremap! <Down> <Esc>
+noremap  <Left> ""
+noremap! <Left> <Esc>
+noremap  <Right> ""
+noremap! <Right> <Esc>
