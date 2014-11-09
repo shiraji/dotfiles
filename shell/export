@@ -12,3 +12,8 @@ export ZLS_COLORS=$LS_COLORS
 if [ -f ~/dotfiles/local/export ]; then
   source ~/dotfiles/local/export
 fi
+case ${OSTYPE} in
+  darwin*)
+    export JAVA_HOME=$(/usr/libexec/java_home)
+    ;;
+esac
