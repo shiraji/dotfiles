@@ -6,7 +6,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 source $HOME/dotfiles/shell/alias
-source $HOME/dotfiles/export
+source $HOME/dotfiles/shell/export
 if [ -f $HOME/dotfiles/local/bashrc ]; then
   source $HOME/dotfiles/local/bashrc
 fi
