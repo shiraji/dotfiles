@@ -91,3 +91,8 @@ source $HOME/dotfiles/shell/alias_svn
 
 # java関連のaliasを読み込む
 source $HOME/dotfiles/shell/alias_java
+
+# localのaliasを読み込む
+if [ -f '$HOME/dotfiles/local/alias' ]; then
+  alias vim='$HOME/dotfiles/local/alias'
+fi
