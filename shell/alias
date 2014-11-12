@@ -1,6 +1,6 @@
 # User specific aliases and functions
-if [ -f '$HOME/local/bin/vim' ]; then
-  alias vim='$HOME/local/bin/vim'
+if [ -f $HOME/local/bin/vim ]; then
+  alias vim=$HOME/local/bin/vim
 fi
 
 function sref() {
@@ -93,6 +93,6 @@ source $HOME/dotfiles/shell/alias_svn
 source $HOME/dotfiles/shell/alias_java
 
 # localのaliasを読み込む
-if [ -f '$HOME/dotfiles/local/alias' ]; then
+if [ -f $HOME/dotfiles/local/alias ]; then
   source $HOME/dotfiles/local/alias
 fi
