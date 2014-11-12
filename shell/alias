@@ -3,6 +3,8 @@ if [ -f $HOME/local/bin/vim ]; then
   alias vim=$HOME/local/bin/vim
 fi
 
+alias cdd='cd ~/dotfiles'
+
 function sref() {
 case $SHELL in
 */zsh)
