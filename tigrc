@@ -10,4 +10,5 @@ set diff-context = 6
 # スペースは無視
 set ignore-space = all
 
-
+# ステータスviewでuntrucked fileを削除できるようにする
+bind status D !rm %(file)
