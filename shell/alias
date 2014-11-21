@@ -82,6 +82,11 @@ function crontabl() {
   fi
 }
 
+# iTerm用のsshの設定
+if [ -f $HOME/bin/956095/ssh-host-color.sh ]; then
+  alias ssh="~/bin/956095/ssh-host-color.sh"
+fi
+
 # git関連のaliasを読み込む
 source $HOME/dotfiles/shell/alias_git
 
