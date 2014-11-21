@@ -12,3 +12,9 @@ set ignore-space = all
 
 # ステータスviewでuntrucked fileを削除できるようにする
 bind status D !rm %(file)
+
+# main viewで直近のコミットをsoft削除する
+bind main R !?git reset --soft HEAD^
+
+# reflogを見れるように。
+bind generic L !git reflog
