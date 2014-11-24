@@ -2,7 +2,7 @@ export LANG=ja_JP.UTF-8
 export EDITOR=vim svn commit
 export SVN_EDITOR=vim
 
-export PATH=$PATH:/usr/local/bin:/bin:/usr/bin:$HOME/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/play:$HOME/local/bin/:
+export PATH=$PATH:/usr/local/bin:/bin:/usr/bin:$HOME/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/local/bin/:
 export SCREENDIR=$HOME/.screen
 
 export LSCOLORS=ExFxCxdxBxegedabagacad
