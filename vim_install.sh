@@ -44,6 +44,7 @@ for (( x=1; x<=$PATCH_NUMBER; x=x+1 )); do
   __get_patch $(( x=$x+1 )) true
   __get_patch $(( x=$x+1 )) true
   __get_patch $(( x=$x+1 )) false
+  sleep 5
 done
 
 # foregoundで終わるとは限らないので、10秒待つ。それでも終わってなかった場合、エラー。
