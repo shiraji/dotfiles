@@ -12,6 +12,7 @@ TIGRC="tigrc"
 GIT_IGNORE="gitignore"
 BASHRC="bashrc"
 PECO="peco/config.json"
+BIN="$HOME/bin"
 
 _only_file_copy=false
 
@@ -20,21 +21,25 @@ DOT_FILES=( $BASHRC $VIM_CONF $VIMRC $GIT_CONFIG $GIT_IGNORE $ZSHRC $SCREENRC $T
 
 __parse_parameters() {
   var=$1
+  TEMP_DOT_FILES=()
   case $var in
     -o|--only-file-copy)
     _only_file_copy=true
     shift
     ;;
     *)
-    DOT_FILES+=($var)
+    TEMP_DOT_FILES+=($var)
     shift
     ;;
   esac
+
+  if [ ${#TEMP_DOT_FILES[@]} -ge 0 ]; then
+    DOT_FILES=$TEMP_DOT_FILES
+  fi
 }
 
 # もし、パラメータが渡されていたら、そちらを利用する。
 if [ $# -gt 0 ]; then
-  DOT_FILES=()
   for var in "$@"
   do
     __parse_parameters $var
@@ -98,6 +103,12 @@ __install_tigrc() {
   cd ~/dotfiles
 }
 
+__install_ssh_iterm_background_script() {
+  if [ ! -d "$BIN/773849" ]; then
+    git clone https://gist.github.com/pol/773849 $BIN/773849
+  fi
+}
+
 for file in ${DOT_FILES[@]}
 do
   # バリデーション
@@ -139,3 +150,8 @@ do
   fi
 
 done
+
+# ファイルに関わらない設定をここでする。
+if [ "$_only_file_copy" = false ]; then
+  __install_ssh_iterm_background_script
+fi
