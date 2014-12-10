@@ -27,7 +27,7 @@ if $TMUX == ''
   set clipboard=unnamed,autoselect		" バッファにクリップボードを利用する
 endif
 " set paste   " 常にペーストモード
-set pastetoggle=<F11>   " ペーストモードを簡単にできるようにF11
+set pastetoggle=<c-@>   " ペーストモードを簡単にできるようにF11
 
 " Complement Command -------------------
 set wildmenu				" コマンド補完を強化
