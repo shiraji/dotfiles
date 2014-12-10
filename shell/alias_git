@@ -4,6 +4,10 @@ function glr() {
   git log origin/${_branch}..${_branch}
 }
 
+function git-current-repo-name {
+  basename `git rev-parse --show-toplevel`
+}
+
 function git-current-branch-status {
   local name st color
 
@@ -26,10 +30,11 @@ function git-current-branch-status {
   fi
 
   changed=`git_not_pushed`
+  repo=`git-current-repo-name`
 
   # %{...%} は囲まれた文字列がエスケープシーケンスであることを明示する
   # これをしないと右プロンプトの位置がずれる
-  echo "(%{$color%}$name%{$reset_color%}$changed)"
+  echo "(%{$color%}$repo - $name%{$reset_color%}$changed)"
 }
 
 # リモートブランチのヘッドのハッシュと今のHEADを比較する
