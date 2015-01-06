@@ -19,9 +19,6 @@ bind main R !?git reset --soft HEAD^
 # reflogを見れるように。
 bind generic L !git reflog
 
-# status viewでファイルを開けるように
-bind status O !vim %(file)
-
 # デフォルトの bind generic G !git gc を無効化する
 bind generic G none
 
