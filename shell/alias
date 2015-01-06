@@ -34,7 +34,6 @@ function rmFile {
   mv $1 $HOME/.Trash/$1.`date +%s`
 }
 
-alias vi=vim
 alias cp='cp -i'
 alias mv='mv -i'
 alias ll='clear;ls -la'
