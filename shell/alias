@@ -44,17 +44,21 @@ alias p="peco"
 
 # cd setting. do clear, cd, pwd, and ls -la
 function cdls() {
-  clear;
-  \cd $1;
-  echo -e '\e[36m'`pwd`'\e[m';
-case ${OSTYPE} in
-  darwin*)
-    ls -la
-    ;;
-  linux*)
-    ls -la | less -EFR;
-    ;;
-esac
+  if [ -n "$SHORT_PROMPT" ]; then
+    \cd $1;
+  else
+    clear;
+    \cd $1;
+    echo -e '\e[36m'`pwd`'\e[m';
+    case ${OSTYPE} in
+      darwin*)
+        ls -la
+        ;;
+      linux*)
+        ls -la | less -EFR;
+        ;;
+    esac
+  fi
 }
 
 # vimのlessを使うように設定
