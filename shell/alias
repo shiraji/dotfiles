@@ -36,11 +36,20 @@ function rmFile {
 
 alias cp='cp -i'
 alias mv='mv -i'
-alias ll='clear;ls -la'
+alias ll=clear_ll
 alias grep='grep --color=always'
 alias cd=cdls
 alias crontab=crontabl
 alias p="peco"
+
+# ll setting, do clear and ls -la
+function clear_ll() {
+  if [ -z "$SHORT_PROMPT" ]; then
+    clear;
+  fi
+
+  ls -la;
+}
 
 # cd setting. do clear, cd, pwd, and ls -la
 function cdls() {
@@ -89,6 +98,9 @@ function crontabl() {
 if [ -f $HOME/bin/956095/ssh-host-color.sh ]; then
   alias ssh="~/bin/956095/ssh-host-color.sh"
 fi
+
+alias SHORT="SHORT_PROMPT=1"
+alias LONG="SHORT_PROMPT="
 
 # git関連のaliasを読み込む
 source $HOME/dotfiles/shell/alias_git
