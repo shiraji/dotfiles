@@ -13,8 +13,9 @@ set ignore-space = all
 # ステータスviewでuntrucked fileを削除できるようにする
 bind status D !rm %(file)
 
-# main viewで直近のコミットをsoft削除する
-bind main R !?git reset --soft HEAD^
+# main/diff時に対象のコミットからgit rebaseができるようにする
+bind main R !git rebase -i %(commit)
+bind diff R !git rebase -i %(commit)
 
 # reflogを見れるように。
 bind generic L !git reflog
