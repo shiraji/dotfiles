@@ -166,3 +166,6 @@ source $HOME/dotfiles/shell/alias
 if [ -f $HOME/dotfiles/local/zshrc ]; then
   source $HOME/dotfiles/local/zshrc
 fi
+
+source $HOME/dotfiles/shell/gradle_zsh_comp
+
