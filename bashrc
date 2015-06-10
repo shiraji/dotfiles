@@ -59,3 +59,5 @@ peco --version 2> /dev/null
 if [ "$?" == "0" ]; then
   bind '"\C-r":"history -n 1 | eval \"tail -r\" | peco\n"'
 fi
+
+source $HOME/dotfiles/shell/gradle_bash_comp
