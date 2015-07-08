@@ -70,7 +70,7 @@ hi CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
 " StatusLine ---------------------------
 set laststatus=2				" ステータスラインを2行に
-set statusline=%<%f\ #%n%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l,%c%V%5P\ \%{fugitive#statusline()}
+set statusline=%<%F\ #%n%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l,%c%V%5P\ \%{fugitive#statusline()}
 
 " Charset, Line ending -----------------
 set termencoding=utf-8
