@@ -127,6 +127,7 @@ let g:NERDTreeMouseMode=2
 "NERDTreeStatusline NERDtreeウィンドウにステータスラインを表示。
 "Values: Any valid statusline setting.
 "Default: %{b:NERDTreeRoot.path.strForOS(0)}
+let g:NERDTreeStatusline="m:menu u:up C:in"
 
 "NERDTreeSortDirs表示されるディレクトリ名をソート
 let g:NERDTreeSortDirs=1
