@@ -14,5 +14,11 @@ fi
 case ${OSTYPE} in
   darwin*)
     export JAVA_HOME=$(/usr/libexec/java_home)
+
+    JAVA8_HOME=`/usr/libexec/java_home -v "1.8" -F`
+    if [ $? -eq 0 ]; then
+      export JAVA8_HOME
+    fi
+
     ;;
 esac
