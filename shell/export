@@ -15,7 +15,7 @@ case ${OSTYPE} in
   darwin*)
     export JAVA_HOME=$(/usr/libexec/java_home)
 
-    JAVA8_HOME=`/usr/libexec/java_home -v "1.8" -F`
+    JAVA8_HOME=`/usr/libexec/java_home -v "1.8" -F &> /dev/null`
     if [ $? -eq 0 ]; then
       export JAVA8_HOME
     fi
