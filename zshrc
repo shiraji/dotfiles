@@ -117,7 +117,7 @@ setopt noautoremoveslash
 function set_prompt() {
   if [ -z "$SHORT_PROMPT" ]; then
     PROMPT='
-[%F{yellow}%n%f%F{red}@%f%F{blue}%m%f %F{cyan}%~%f]`git-current-branch-status`
+[%F{yellow}%n%f%F{red}@%f%F{blue}%m%f %F{cyan}%~%f][%F{magenta}%D %*%f]`git-current-branch-status`
 %(?.%F{green}.%F{red})%#%f '
   else
     # SHORT_PROMPTが設定されていた場合、詳細情報を表示しない。
