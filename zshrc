@@ -117,7 +117,7 @@ setopt noautoremoveslash
 function set_prompt() {
   if [ -z "$SHORT_PROMPT" ]; then
     PROMPT='
-[%F{yellow}%n%f%F{red}@%f%F{blue}%m%f %F{cyan}%~%f][%F{magenta}%D %*%f]`git-current-branch-status`
+[%F{yellow}%n%f%F{red}@%f%F{blue}%m%f %F{cyan}%~%f]`git-current-branch-status`
 %(?.%F{green}.%F{red})%#%f '
   else
     # SHORT_PROMPTが設定されていた場合、詳細情報を表示しない。
@@ -129,6 +129,9 @@ function set_prompt() {
 precmd() {
   set_prompt
 }
+
+# 左側に時間を表示する。
+RPROMPT="[%F{magenta}%D %*%f]"
 
 # コマンドがない場合に呼ばれる。abort/edit/no/yesが選択肢。
 SPROMPT="%r is correct? [a,e,n,y]: "
