@@ -68,6 +68,12 @@ augroup END
 " hi CursorLine ctermbg=darkgray guibg=darkgray
 hi CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
+" vimdiff ---------------------------------
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
+
 " StatusLine ---------------------------
 set laststatus=2				" ステータスラインを2行に
 set statusline=%<%F\ #%n%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l,%c%V%5P\ \%{fugitive#statusline()}
