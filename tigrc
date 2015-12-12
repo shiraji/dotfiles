@@ -23,3 +23,9 @@ bind generic G none
 # gをvimライクな動きに修正。
 bind generic g move-first-line
 bind generic G move-last-line
+
+# rebase fixup/squash
+bind diff F !git commit --fixup %(commit)
+bind diff S !git commit --squash %(commit)
+bind main F !git commit --fixup %(commit)
+bind main S !git commit --squash %(commit)
