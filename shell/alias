@@ -70,6 +70,14 @@ function cdls() {
   fi
 }
 
+# jump to git-root dir
+function cdu() {
+  cd ./$(git rev-parse --show-cdup)
+  if [ $# = 1 ]; then
+    cd $1
+  fi
+}
+
 # vimのlessを使うように設定
 _vim_version=`vim --version | head -1 | sed 's/^.*\ \([0-9]\)\.\([0-9]\)\ .*$/\1\2/'`
 _less_path='/usr/share/vim/vim'$_vim_version'/macros/less.sh'
