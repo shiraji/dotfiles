@@ -35,7 +35,6 @@ function git_branch_with_format {
 }
 
 function root_non_root_sign_color() {
-echo "$1"
   if [[ "$1" == "0" ]]; then
     echo "1;32"
   else
@@ -45,15 +44,14 @@ echo "$1"
 
 set_prompt() {
   _last_exist_status=$?
-  echo "last: $_last_exist_status"
   if [ -z "$SHORT_PROMPT" ]; then
-    PS1='\n\[\033[0;37m\][\[\033[0;33m\]\u\[\033[0;31m\]@\[\033[0;34m\]\h \[\033[01;36m\]\w\[\033[0;37m\]] \[\033[$(git_status)m\]`git_branch_with_format`\[\033[00m\]`git_not_pushed`\n\[\033[`root_non_root_sign_color`m\]\$\[\033[00m\] '
+    PS1='\[\033[0;37m\][\[\033[0;33m\]\u\[\033[0;31m\]@\[\033[0;34m\]\h \[\033[01;36m\]\w\[\033[0;37m\]] \[\033[$(git_status)m\]`git_branch_with_format`\[\033[00m\]`git_not_pushed`\n\[\033[$(root_non_root_sign_color $_last_exist_status)m\]\$\[\033[00m\] '
   else
-    PS1='\$ '
+    PS1="\[\033[$(root_non_root_sign_color $_last_exist_status)m\]\$\[\033[00m\] "
   fi
 }
 
-PROMPT_COMMANDP='set_prompt'
+PROMPT_COMMAND='set_prompt'
 
 peco --version 2> /dev/null
 if [ "$?" == "0" ]; then
