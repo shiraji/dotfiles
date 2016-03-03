@@ -87,7 +87,7 @@ function gi() {
   else
     _param=$@
   fi
-  curl https://www.gitignore.io/api/${_param}
+  curl -L -s https://www.gitignore.io/api/${_param}
 }
 
 # git list unchanged file
