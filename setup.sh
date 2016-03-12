@@ -14,11 +14,12 @@ BASHRC="bashrc"
 PECO="peco/config.json"
 BIN="$HOME/bin"
 NVIMRC="nvimrc"
+NVIM_CONF="nvim/conf"
 
 _only_file_copy=false
 
 #$HOME以下にある設定ファイル。スペースで分ける。
-DOT_FILES=( $BASHRC $VIM_CONF $VIMRC $GIT_CONFIG $GIT_IGNORE $ZSHRC $SCREENRC $TMUXCONF $GEMRC $TIGRC $PECO $NVIMRC )
+DOT_FILES=( $BASHRC $VIM_CONF $VIMRC $GIT_CONFIG $GIT_IGNORE $ZSHRC $SCREENRC $TMUXCONF $GEMRC $TIGRC $PECO $NVIMRC $NVIM_CONF )
 
 __parse_parameters() {
   var=$1
