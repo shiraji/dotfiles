@@ -1,18 +1,2 @@
-[core]
-  excludesfile = ~/.gitignore
-  editor = vim -c \"set fenc=utf-8\"
-  filemode = false
-  ignorecase = false
-[color]
-  diff = auto
-  status = auto
-  branch = auto
-  interactive = auto
-[mergetool]
-  keepBackup = false
-[gui]
-  encoding = utf-8
-[include]
-  path = ~/dotfiles/local/gitconfig
-[rebase]
-  autostash = true
+[init]
+  templatedir = ~/dotfiles/.git_template

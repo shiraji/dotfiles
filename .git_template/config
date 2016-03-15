@@ -1,0 +1,18 @@
+[core]
+  excludesfile = ~/.gitignore
+  editor = vim -c \"set fenc=utf-8\"
+  filemode = false
+  ignorecase = false
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+[mergetool]
+  keepBackup = false
+[gui]
+  encoding = utf-8
+[rebase]
+  autostash = true
+[include]
+  path = ~/dotfiles/local/gitconfig

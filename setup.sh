@@ -9,7 +9,6 @@ VIM_CONF="vim/conf"
 GIT_CONFIG="gitconfig"
 TIG_DOWNLOAD_DIR="$HOME/tig"
 TIGRC="tigrc"
-GIT_IGNORE="gitignore"
 BASHRC="bashrc"
 PECO="peco/config.json"
 BIN="$HOME/bin"
@@ -19,7 +18,7 @@ CONFIG="config"
 _only_file_copy=false
 
 #$HOME以下にある設定ファイル。スペースで分ける。
-DOT_FILES=( $BASHRC $VIM_CONF $VIMRC $GIT_CONFIG $GIT_IGNORE $ZSHRC $SCREENRC $TMUXCONF $GEMRC $TIGRC $PECO $NVIM_CONF $CONFIG )
+DOT_FILES=( $BASHRC $VIM_CONF $VIMRC $GIT_CONFIG $ZSHRC $SCREENRC $TMUXCONF $GEMRC $TIGRC $PECO $NVIM_CONF $CONFIG )
 
 __parse_parameters() {
   var=$1
