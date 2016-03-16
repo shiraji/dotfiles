@@ -18,15 +18,17 @@ function git-current-branch-status {
   if [[ $? -ne 0 ]]; then
     return
   fi
-  st=`git status 2> /dev/null`
-  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+
+  st=`git ls-files -m -o --exclude-standard | wc -l | tr -d ' ' 2> /dev/null`
+  if [[ $st == 0 ]]; then
     color=${fg[green]}
-  elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
-    color=${fg[yellow]}
-  elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
-    color=${fg_bold[red]}
   else
-    color=${fg[red]}
+    st=`git ls-files -m --exclude-standard  | wc -l | tr -d ' ' 2> /dev/null`
+    if [[ $st == 0 ]]; then
+      color=${fg[yellow]}
+    else
+      color=${fg[red]}
+    fi
   fi
 
   changed=`git_not_pushed`
