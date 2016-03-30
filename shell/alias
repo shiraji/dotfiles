@@ -112,10 +112,10 @@ alias LONG="SHORT_PROMPT="
 
 # tldr
 if type "tldr" > /dev/null; then
-  alias man=tldr
-  alias manf=\man
+  alias mans=tldr
+else
+  alias mans=man
 fi
-
 
 # git関連のaliasを読み込む
 source $HOME/dotfiles/shell/alias_git
