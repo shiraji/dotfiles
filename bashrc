@@ -54,7 +54,7 @@ set_prompt() {
 PROMPT_COMMAND='set_prompt'
 
 peco --version 2> /dev/null
-if [ "$?" == "0" ]; then
+if [ "$?" -eq "0" ]; then
   bind '"\C-r":"history -n 1 | eval \"tail -r\" | peco\n"'
 fi
 
