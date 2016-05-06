@@ -111,7 +111,7 @@ alias SHORT="SHORT_PROMPT=1"
 alias LONG="SHORT_PROMPT="
 
 # tldr
-if type "tldr" > /dev/null; then
+if which tldr > /dev/null; then
   alias mans=tldr
 else
   alias mans=man
