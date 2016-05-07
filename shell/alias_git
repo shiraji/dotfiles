@@ -105,6 +105,12 @@ function gunch() {
   done
 }
 
+# add shiraji as author of git repo
+function addshiraji() {
+  git config user.name shiraji
+  git config user.email isogai.shiraji@gmail.com
+}
+
 # tig系のalias
 alias t='tig'
 alias ts='t status'
