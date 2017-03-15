@@ -29,3 +29,6 @@ bind diff F !git commit --fixup %(commit)
 bind diff S !git commit --squash %(commit)
 bind main F !git commit --fixup %(commit)
 bind main S !git commit --squash %(commit)
+
+# hash値コピー
+bind main Y !@bash -c "echo -n %(commit) | pbcopy"
