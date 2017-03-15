@@ -9,6 +9,8 @@ set diff-context = 6
 
 # ステータスviewでuntrucked fileを削除できるようにする
 bind status D !rm %(file)
+bind status a !git add --all
+bind status R !git reset
 
 # main/diff時に対象のコミットからgit rebaseができるようにする
 bind main R !git rebase -i %(commit)
