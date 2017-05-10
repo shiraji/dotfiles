@@ -70,9 +70,6 @@ __create_current_file_dir() {
 }
 
 __install_vim() {
-  # vim74をインストールする
-  bash ./vim_install.sh
-
   #neobundleをインストールする
   mkdir -p $HOME/.vim/bundle/
   git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
