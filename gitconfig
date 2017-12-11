@@ -1,2 +1,4 @@
 [init]
   templatedir = ~/dotfiles/.git_template
+[ghq]
+	root = ~/go/src
