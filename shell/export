@@ -10,6 +10,7 @@ export ZLS_COLORS=$LS_COLORS
 export LESS='-R'
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+export LINT_PRINT_STACKTRACE=true
 
 case ${OSTYPE} in
   darwin*)
