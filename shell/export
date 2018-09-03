@@ -11,6 +11,9 @@ export LESS='-R'
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export LINT_PRINT_STACKTRACE=true
+if [ -d ~/Library/Android/sdk/platform-tools/ ]; then
+  export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools/
+fi
 
 case ${OSTYPE} in
   darwin*)
