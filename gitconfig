@@ -2,3 +2,7 @@
   templatedir = ~/dotfiles/.git_template
 [ghq]
 	root = ~/go/src
+[gpg]
+	program = gpg2
+[user]
+	signingkey = C3DA524855C37D65F25F16FFBC11119CD4E03574
