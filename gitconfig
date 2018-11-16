@@ -6,3 +6,5 @@
 	program = gpg2
 [user]
 	signingkey = C3DA524855C37D65F25F16FFBC11119CD4E03574
+[commit]
+	gpgsign = true
