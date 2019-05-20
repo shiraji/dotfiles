@@ -159,8 +159,7 @@ function kcswitch() {
 function gcloud-switch() {
     project=$(gcloud projects list --format="value(name)" | peco --prompt='new project >' |  sed -e 's/^\*//' | awk '{print $1}')
     if [ -n "$project" ]; then
-        echo "Switch to ${project}."
-        gcloud config set project $project
+        gcloud config set project --verbosity="debug" $project
     fi
 }
 
