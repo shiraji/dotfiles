@@ -149,36 +149,8 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-finish
 fi
 
-function kcswitch() {
-    kcontext=$(kubectl config get-contexts -o name | peco --prompt='new context >' |  sed -e 's/^\*//' | awk '{print $1}')
-    if [ -n "$kcontext" ]; then
-        kubectl config use-context $kcontext
-    fi
-}
-
-function gcloud-switch() {
-    project=$(gcloud projects list --format="value(name)" | peco --prompt='new project >' |  sed -e 's/^\*//' | awk '{print $1}')
-    if [ -n "$project" ]; then
-        gcloud config set project --verbosity="debug" $project
-    fi
-}
-
-function cdv() {
-    dir=$(ghq list -p | peco)
-    if [ -n "$dir" ]; then
-        cd $dir
-    fi
-}
-
-function peco-select-history() {
-    BUFFER=$(\history -n 1 | \
-        eval "tail -r" | \
-        peco --query "$LBUFFER")
-    CURSOR=$#BUFFER
-    zle clear-screen
-}
-zle -N peco-select-history
-bindkey '^r' peco-select-history
+# peco
+source $HOME/dotfiles/shell/peco
 
 # export関連をimport
 source $HOME/dotfiles/shell/export
