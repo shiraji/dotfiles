@@ -156,6 +156,14 @@ function kcswitch() {
     fi
 }
 
+function gcloud-switch() {
+    project=$(gcloud projects list --format="value(name)" | peco --prompt='new project >' |  sed -e 's/^\*//' | awk '{print $1}')
+    if [ -n "$project" ]; then
+        echo "Switch to ${project}."
+        gcloud config set project $project
+    fi
+}
+
 function peco-select-history() {
     BUFFER=$(\history -n 1 | \
         eval "tail -r" | \
