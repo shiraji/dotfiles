@@ -2,3 +2,5 @@
   templatedir = ~/dotfiles/.git_template
 [include]
 	path = ~/dotfiles/local/gitconfig
+[ghq]
+	root = ~/dev

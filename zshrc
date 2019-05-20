@@ -149,15 +149,8 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-finish
 fi
 
-function peco-select-history() {
-    BUFFER=$(\history -n 1 | \
-        eval "tail -r" | \
-        peco --query "$LBUFFER")
-    CURSOR=$#BUFFER
-    zle clear-screen
-}
-zle -N peco-select-history
-bindkey '^r' peco-select-history
+# peco
+source $HOME/dotfiles/shell/peco
 
 # export関連をimport
 source $HOME/dotfiles/shell/export
