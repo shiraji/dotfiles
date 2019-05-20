@@ -149,6 +149,13 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-finish
 fi
 
+function kcswitch() {
+    kcontext=$(kubectl config get-contexts -o name | peco --prompt='new context >' |  sed -e 's/^\*//' | awk '{print $1}')
+    if [ -n "$kcontext" ]; then
+        kubectl config use-context $kcontext
+    fi
+}
+
 function peco-select-history() {
     BUFFER=$(\history -n 1 | \
         eval "tail -r" | \
