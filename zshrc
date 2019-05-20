@@ -163,6 +163,13 @@ function gcloud-switch() {
     fi
 }
 
+function cdv() {
+    dir=$(ghq list -p | peco)
+    if [ -n "$dir" ]; then
+        cd $dir
+    fi
+}
+
 function peco-select-history() {
     BUFFER=$(\history -n 1 | \
         eval "tail -r" | \
