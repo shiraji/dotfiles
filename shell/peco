@@ -19,6 +19,40 @@ function cdv() {
     fi
 }
 
+function is_git_dir() {
+    [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1
+}
+
+function gcr() {
+    is_git_dir
+    if [ $? != 0 ]; then
+      echo "Not git repo"
+      return 1
+    fi
+    branch=$(git branch -a --format='%(refname:short)' | peco)
+    if [ -n "$branch" ]; then
+      local=${branch#origin/}
+      git rev-parse --verify $local > /dev/null 2>&1
+      if [ $? -eq 0 ]; then
+        git checkout $local
+      else
+        git checkout -b $local $branch
+      fi
+    fi
+}
+
+function gbd() {
+    is_git_dir
+    if [ $? != 0 ]; then
+      echo "Not git repo"
+      return 1
+    fi
+    branch=$(git branch --format='%(refname:short)' | peco)
+    if [ -n "$branch" ]; then
+      git branch -D $branch
+    fi
+}
+
 function peco-select-history() {
     BUFFER=$(\history -n 1 | \
         eval "tail -r" | \
