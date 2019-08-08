@@ -53,6 +53,11 @@ function gbd() {
     fi
 }
 
+function gcb() {
+    BUFFER="$(git branch --format='%(refname:short)' | peco --query "$LBUFFER")"
+    CURSOR=$#BUFFER
+}
+
 function peco-select-history() {
     BUFFER=$(\history -n 1 | \
         eval "tail -r" | \
