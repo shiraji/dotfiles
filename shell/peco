@@ -1,4 +1,4 @@
-function kcswitch() {
+function kubectl-switch() {
     kcontext=$(kubectl config get-contexts -o name | peco --prompt='new context >' |  sed -e 's/^\*//' | awk '{print $1}')
     if [ -n "$kcontext" ]; then
         kubectl config use-context $kcontext
