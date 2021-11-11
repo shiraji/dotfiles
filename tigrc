@@ -35,3 +35,6 @@ bind main S !git commit --squash %(commit)
 
 # hash値コピー
 bind main Y !@bash -c "echo -n %(commit) | pbcopy"
+
+# verboseモードでcommitメッセージを書く
+bind status C !git commit --verbose
