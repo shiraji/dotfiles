@@ -21,7 +21,6 @@ esac
 case ${OSTYPE} in
   darwin*)
     alias ls='ls -G'
-    alias rm='rmtrash'
     ;;
   linux*)
     alias ls='ls --color=always'
