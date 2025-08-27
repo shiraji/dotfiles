@@ -119,11 +119,10 @@ do
   __prepare_current_file $currentFile
 
   #絶対パスを探す
-  _dir=$(dirname $HOME/dotfiles/setup.sh)
   __create_current_file_dir $(dirname ${currentFile})
 
   #リンクを張る
-  ln -s ${_dir}/$file $currentFile
+  ln -s `pwd`/$file $currentFile
   echo "Create symbolic link: $currentFile"
 
   # ファイルコピーだけなら、ループに戻る

@@ -29,7 +29,7 @@ function gcr() {
       echo "Not git repo"
       return 1
     fi
-    branch=$(git branch -a --format='%(refname:short)' | peco)
+    branch=$(git branch -a --sort=-authordate --format='%(refname:short)' | peco)
     if [ -n "$branch" ]; then
       local=${branch#origin/}
       git rev-parse --verify $local > /dev/null 2>&1

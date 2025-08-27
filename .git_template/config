@@ -1,5 +1,5 @@
 [core]
-  excludesfile = ~/.gitignore
+  excludesfile = ~/.config/git/ignore
   editor = vim -c \"set fenc=utf-8\"
   filemode = false
   ignorecase = false
