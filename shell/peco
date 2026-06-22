@@ -19,6 +19,34 @@ function cdv() {
     fi
 }
 
+function cdw() {
+    dir=$(ls -d ~/claude-workbench/workspace/*/ | peco)
+    if [ -n "$dir" ]; then
+        cd $dir
+    fi
+}
+
+function cdc() {
+    cd ~/claude-workbench/com
+}
+
+function cdrw() {
+    cd ~/claude-workbench/review
+}
+
+function cdt() {
+    local base=~/claude-workbench/tasks
+    local ws=$(ls -d $base/*/ 2>/dev/null | xargs -I{} basename {} | peco --prompt='workspace >')
+    if [ -z "$ws" ]; then
+        return
+    fi
+    local task=$(ls -d $base/$ws/*/ 2>/dev/null | xargs -I{} basename {} | peco --prompt='task >')
+    if [ -z "$task" ]; then
+        return
+    fi
+    cd $base/$ws/$task
+}
+
 function is_git_dir() {
     [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1
 }
@@ -61,7 +89,8 @@ function gcb() {
 function peco-select-history() {
     BUFFER=$(\history -n 1 | \
         eval "tail -r" | \
-        peco --query "$LBUFFER")
+        peco --query "$LBUFFER" | \
+        sed 's/\\n/\n/g')
     CURSOR=$#BUFFER
     zle clear-screen
 }
